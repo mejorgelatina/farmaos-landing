@@ -1,0 +1,974 @@
+<!DOCTYPE html><html class="light scroll-smooth" lang="es" style=""><head></head><body class="bg-[#FFFFFF] text-farma-text font-sans antialiased selection:bg-farma-blue/15 selection:text-farma-black pb-20 md:pb-0"><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script id="tailwind-config">try{
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "farma-black": "#111111",
+            "farma-text": "#1D1D1F",
+            "farma-muted": "#6E6E73",
+            "farma-subtle": "#86868B",
+            "farma-line": "#E5E5EA",
+            "farma-bg": "#F5F5F3",
+            "farma-bg-warm": "#F9F9F7",
+            "farma-blue": "#0E6AF2",
+            "farma-blue-tint": "#EBF2FE",
+            "farma-blue-dark": "#0B55C4",
+            "clinic-blue": "#2A50CD",
+            "clinic-tint": "#EFF3FF",
+          },
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+          letterSpacing: {
+            tighter: '-0.035em',
+            tight: '-0.02em',
+            snug: '-0.01em',
+          }
+        }
+      }
+    }
+  }catch(_e){}</script><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<header class="w-full sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-farma-line/80">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-6 md:gap-10">
+      <!-- Brand Wordmark & Evolution Badge -->
+      <div class="flex items-center gap-3">
+        <a class="flex items-center select-none" href="#">
+          <svg class="h-7 w-auto" fill="none" viewBox="0 0 2174 776" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1664.61 241.921C1748.95 239.276 1819.57 305.298 1822.6 389.626C1825.62 473.954 1759.92 544.867 1675.61 548.275C1590.75 551.703 1519.29 485.489 1516.24 400.62C1513.19 315.752 1579.73 244.584 1664.61 241.921ZM1677.61 484.823C1727.35 480.315 1764.04 436.37 1759.6 386.622C1755.16 336.875 1711.26 300.124 1661.51 304.498C1611.66 308.881 1574.82 352.878 1579.27 402.721C1583.72 452.564 1627.77 489.34 1677.61 484.823Z" fill="#0E6AF2"></path>
+            <path d="M964.034 319.446C979.473 318.711 1012.33 325.327 1023.78 334.807C1055.62 361.165 1040.79 349.028 1072.23 331.556C1087.46 323.244 1104.55 318.925 1121.9 319.001C1147.6 319.018 1172.52 327.186 1191.07 345.42C1217.15 371.066 1213.18 409.631 1213.18 443.171L1212.83 523.769C1191.44 524.527 1167.11 523.997 1145.5 524.011C1145.64 521.468 1145.72 518.922 1145.74 516.375C1146.16 492.295 1146.41 468.211 1146.51 444.127C1146.54 430.164 1147.08 416.438 1144.92 402.442C1140.47 372.978 1097.86 364.095 1078.53 383.891C1070.09 392.534 1064.2 405.88 1064.01 417.908C1063.65 440.597 1063.78 463.692 1063.8 486.369L1063.83 523.855C1042.38 524.305 1016.85 523.863 995.395 523.486L995.775 452.876C995.909 436.131 997.406 415.97 993.151 399.823C985.072 369.657 940.477 364.49 920.158 384.16C901.074 402.635 905.444 434.794 905.568 459.445C905.712 480.784 905.636 502.124 905.342 523.462C883.424 524.344 856.827 523.636 834.736 523.582L834.514 326.113C851.809 325.701 884.657 325.924 901.41 327.076C901.722 332.18 901.638 338.591 901.715 343.804C919.858 326.351 939.348 320.881 964.034 319.446Z" fill="#0E6AF2"></path>
+            <path d="M474.268 318.383C505.057 316.654 521.687 323.133 547.409 337.755C547.468 333.93 547.319 331.527 548.579 327.852C552.834 324.874 609.525 326.357 619.496 326.551C620.131 345.77 619.131 369.423 619.122 389.129L619.575 523.36C595.235 523.424 570.894 523.342 546.554 523.116L547.196 508.743C540.209 513.883 536.42 516.4 528.879 520.77C518.177 526.655 500.691 530.425 488.61 531.335C457.908 533.531 427.61 523.304 404.52 502.949C382.995 484.332 372.427 459.29 370.454 431.208C365.935 366.882 411.709 322.828 474.268 318.383ZM501.548 473.779C529.565 469.146 548.553 442.719 544.005 414.688C539.457 386.657 513.089 367.589 485.044 372.051C456.878 376.532 437.708 403.04 442.276 431.193C446.843 459.345 473.41 478.433 501.548 473.779Z" fill="#0E6AF2"></path>
+            <path d="M1330.27 320.412C1353 317.746 1377.64 320.815 1397.87 331.754C1401.31 333.612 1406.2 336.606 1410.06 336.738C1412.46 334.934 1411.25 332.964 1412.18 328.285C1416.67 324.953 1473.84 326.477 1483.19 326.671C1484.45 344.814 1483.81 372.407 1483.9 391.588C1484.16 435.641 1484.03 479.695 1483.51 523.746C1464.85 524.768 1432.5 523.772 1413.08 523.029C1410.59 522.933 1412.93 515.904 1411.36 512.792C1408.5 512.501 1404.09 515.912 1401.41 517.606C1336.51 553.439 1255.74 519.452 1240.15 445.61C1230.03 397.666 1255.06 346.949 1300.5 328.473C1310.55 324.387 1319.54 322.258 1330.27 320.412ZM1367.54 475.377C1395.87 470.418 1414.86 443.501 1410.03 415.155C1405.2 386.808 1378.37 367.694 1350.01 372.39C1321.45 377.116 1302.18 404.161 1307.04 432.693C1311.9 461.226 1339.03 480.368 1367.54 475.377Z" fill="#0E6AF2"></path>
+            <path d="M329.781 232.449C341.696 231.287 355.058 231.517 366.993 231.761C366.804 249.962 366.813 268.164 367.02 286.364C333.844 286.953 316.054 293.554 315.887 329.894C326.144 330.508 336.62 329.818 347.405 330.575C347.517 349.392 347.85 368.208 348.407 387.017C337.804 387.257 327.199 387.418 316.593 387.498C316.286 430.321 315.629 480.947 317.442 523.148C307.485 523.348 297.235 523.286 287.25 523.349L245.959 523.274C246.496 480.424 246.434 430.771 245.565 388.033C236.432 387.418 223.799 387.628 214.455 387.538C214.952 368.2 215.126 348.855 214.978 329.511C225.318 329.313 235.661 329.254 246.002 329.332C245.983 304.573 247.341 287.228 263.647 266.694C280.993 244.851 302.828 235.692 329.781 232.449Z" fill="#0E6AF2"></path>
+            <path d="M1930.83 310.439C1961.19 309.345 1988.51 315.336 2015.46 329.48C2011.14 341.424 2003.89 355.624 1997.43 366.489C1983.86 361.316 1933.49 338.573 1930.77 369.034C1930.47 384.218 1952.42 390.007 1963.09 393.779C1981.22 400.426 2005.71 408.426 2017.91 423.951C2047.81 461.999 2028.52 516.526 1981.21 528.075C1958.44 533.631 1950.46 535.177 1927.62 533.276C1898.74 530.538 1873.69 518.848 1850.02 502.548C1858.96 488.322 1865.26 476.115 1873.05 461.205C1892.13 474.424 1913.53 485.986 1937.62 484.509C1943.27 484.266 1951.38 481.698 1954.73 476.835C1975.43 446.365 1926.53 440.589 1908.52 432.123C1906.39 431.352 1904.24 430.324 1902.15 429.508C1880.05 420.875 1860.88 405.586 1858.57 380.447C1857.24 365.916 1862.02 346.702 1871.35 335.197C1885.8 317.4 1909.48 312.639 1930.83 310.439Z" fill="#0E6AF2"></path>
+            <path d="M773.357 324.521C780.351 324.433 787.347 324.457 794.341 324.59C795.698 342.273 793.749 362.748 795.087 381.804C765.658 378.376 735.012 380.191 727.922 414.896C725.486 426.822 726.683 443.187 726.692 455.623C726.565 478.153 726.725 500.683 727.172 523.209C706.98 523.912 683.224 523.328 662.749 523.351L658.993 522.753C658.653 522.27 657.978 521.553 657.777 521.028C655.661 515.491 656.5 342.446 657.458 326.67C678.081 325.468 704.714 326 725.564 326.409L725.253 342.8C741.225 330.922 753.462 325.264 773.357 324.521Z" fill="#0E6AF2"></path>
+          </svg>
+        </a>
+        
+      </div>
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center gap-7 text-[13px] text-farma-muted"><a class="hover:text-farma-black transition-colors" href="#que-es">¿Qué es?</a><a class="hover:text-farma-black transition-colors" href="#problemas">Problemas que resolvemos</a><a class="hover:text-farma-black transition-colors" href="#producto">Producto</a><a class="hover:text-farma-black transition-colors" href="#ecosistema-clinico">Clinic &amp; Dental</a><a class="hover:text-farma-black transition-colors" href="#diferencial">Diferencial</a></nav>
+    </div>
+    <div class="flex items-center gap-3">
+      <a class="hidden sm:inline-block text-xs text-farma-muted hover:text-farma-black transition-colors px-2 py-1.5 font-medium" href="#producto">Ver producto</a>
+      <a class="bg-farma-blue hover:bg-farma-blue-dark text-white px-4 py-2 rounded-full font-medium transition-all text-xs tracking-tight shadow-sm inline-flex items-center gap-1.5" href="#demo-form">
+        <span class="">Agendar demo</span>
+        <span class="text-[10px]">→</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="">
+  <!-- HERO SECTION -->
+  <section class="pt-14 md:pt-20 pb-16 px-6 bg-gradient-to-b from-farma-bg-warm/70 to-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <!-- QR / Event Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white border border-farma-line rounded-full text-xs text-farma-muted mb-6 shadow-sm"><span class="w-2 h-2 rounded-full bg-farma-blue"></span><span class="font-medium text-farma-black">Plataforma operativa para farmacias y consultorios</span><span class="text-farma-subtle">·</span><span class="font-medium text-farma-blue">farmaOs</span></div>
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-5xl md:text-[56px] font-normal tracking-tighter leading-[1.12] text-farma-black mb-5">tú cuidas de tus clientes.<br class=""><span class="text-farma-muted font-normal">nosotros de tu farmacia.</span></h1>
+      <p class="text-base md:text-lg text-farma-muted font-normal max-w-2xl mx-auto leading-relaxed mb-8"><span class="font-semibold text-farma-black">farmaOs</span> es la plataforma operativa para farmacias y consultorios médicos en México, diseñada para simplificar la operación diaria.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-14">
+        <a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-farma-blue hover:bg-farma-blue-dark text-white px-7 py-3 rounded-full text-sm font-medium transition-all shadow-sm" href="#demo-form">
+          <span class="">Agendar una demo</span>
+          <span class="text-xs">→</span>
+        </a>
+        <a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-farma-text hover:text-farma-black px-6 py-3 rounded-full text-sm font-medium border border-farma-line bg-white hover:bg-farma-bg transition-all" href="#producto">
+          Ver cómo funciona
+        </a>
+      </div>
+      <!-- Quick stats trust row -->
+      <div class="grid grid-cols-3 max-w-lg mx-auto pt-4 border-t border-farma-line/70 text-center text-xs"><div class=""><div class="font-semibold text-farma-black text-sm md:text-base">Producto</div><div class="text-farma-subtle text-[11px] mt-0.5">Diseñado para mostrador</div></div><div class=""><div class="font-semibold text-farma-black text-sm md:text-base">Claridad</div><div class="text-farma-subtle text-[11px] mt-0.5">Caja, lotes y control</div></div><div class=""><div class="font-semibold text-farma-black text-sm md:text-base">Farmacia</div><div class="text-farma-subtle text-[11px] mt-0.5">Hecho para México</div></div></div>
+    </div>
+
+    <!-- SOFTWARE SHOWCASE MOCKUP (Product Hero Viewport) -->
+    <div class="max-w-6xl mx-auto mt-12 md:mt-16">
+      <div class="rounded-2xl border border-farma-line/80 bg-white shadow-xl shadow-black/5 overflow-hidden">
+        <!-- Top control bar -->
+        <div class="h-10 bg-farma-bg-warm border-b border-farma-line/70 px-4 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+            <span class="ml-4 text-[11px] text-farma-subtle font-mono hidden sm:inline">app.frmos.io/panel-operativo</span>
+          </div>
+          <div class="flex items-center gap-3 text-xs text-farma-subtle">
+            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-200/60 text-[10px] text-farma-muted font-mono uppercase tracking-wider">
+              Interfaz ilustrativa / Entorno demostrativo
+            </span>
+            <span class="text-farma-line hidden sm:inline">|</span>
+            <span class="flex items-center gap-1 text-[11px] text-farma-blue font-medium">
+              <span class="w-1.5 h-1.5 rounded-full bg-farma-blue"></span> Punto de Venta Conectado
+            </span>
+          </div>
+        </div>
+        <!-- Dashboard Clean Canvas -->
+        <div class="p-6 md:p-8 bg-white grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Left Column: Metrics & Flow (8 cols) -->
+          <div class="lg:col-span-8 space-y-6">
+            <div class="grid grid-cols-3 gap-3 md:gap-4">
+              <div class="p-3.5 md:p-4 rounded-xl bg-farma-bg-warm border border-farma-line/60">
+                <span class="text-[10px] md:text-[11px] font-medium uppercase tracking-wider text-farma-subtle block mb-1">Ventas del Día</span>
+                <div class="text-xl md:text-2xl font-semibold tracking-tight text-farma-black">$28,450<span class="text-xs font-normal text-farma-subtle">.00</span></div>
+                <span class="text-[10px] md:text-[11px] text-farma-subtle font-medium mt-1 inline-block">Dato demostrativo</span>
+              </div>
+              <div class="p-3.5 md:p-4 rounded-xl bg-farma-bg-warm border border-farma-line/60">
+                <span class="text-[10px] md:text-[11px] font-medium uppercase tracking-wider text-farma-subtle block mb-1">Tickets Atendidos</span>
+                <div class="text-xl md:text-2xl font-semibold tracking-tight text-farma-black">142</div>
+                <span class="text-[10px] md:text-[11px] text-farma-subtle mt-1 inline-block">Ticket prom: $200</span>
+              </div>
+              <div class="p-3.5 md:p-4 rounded-xl bg-farma-bg-warm border border-farma-line/60">
+                <span class="text-[10px] md:text-[11px] font-medium uppercase tracking-wider text-farma-subtle block mb-1">Corte en Caja</span>
+                <div class="text-xl md:text-2xl font-semibold tracking-tight text-farma-black">$7,120<span class="text-xs font-normal text-farma-subtle">.00</span></div>
+                <span class="text-[10px] md:text-[11px] text-farma-blue font-medium mt-1 inline-block">Balance simulado</span>
+              </div>
+            </div>
+            <!-- Monochromatic SVG Flow Chart -->
+            <div class="p-4 md:p-5 rounded-xl border border-farma-line/60 bg-white">
+              <div class="flex items-center justify-between mb-3">
+                <div>
+                  <h4 class="text-xs font-semibold text-farma-black tracking-tight">Actividad en mostrador y dispensación</h4>
+                  <p class="text-[11px] text-farma-subtle">Flujo continuo ilustrativo</p>
+                </div>
+                <span class="text-[11px] text-farma-muted font-medium bg-farma-bg px-2 py-0.5 rounded">Jornada Activa</span>
+              </div>
+              <div class="h-32 md:h-36 w-full relative">
+                <svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 500 120">
+                  <defs>
+                    <linearGradient id="heroGradient" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0%" stop-color="#0E6AF2" stop-opacity="0.18"></stop>
+                      <stop offset="100%" stop-color="#0E6AF2" stop-opacity="0.0"></stop>
+                    </linearGradient>
+                  </defs>
+                  <line stroke="#F5F5F3" stroke-width="1" x1="0" x2="500" y1="20" y2="20"></line>
+                  <line stroke="#F5F5F3" stroke-width="1" x1="0" x2="500" y1="60" y2="60"></line>
+                  <line stroke="#F5F5F3" stroke-width="1" x1="0" x2="500" y1="100" y2="100"></line>
+                  <path d="M 0 100 Q 60 90, 110 65 T 220 40 T 320 55 T 410 25 L 500 30 L 500 120 L 0 120 Z" fill="url(#heroGradient)"></path>
+                  <path d="M 0 100 Q 60 90, 110 65 T 220 40 T 320 55 T 410 25 L 500 30" fill="none" stroke="#0E6AF2" stroke-linecap="round" stroke-width="2.5"></path>
+                  <circle cx="410" cy="25" fill="#0E6AF2" r="4.5" stroke="#ffffff" stroke-width="2"></circle>
+                </svg>
+              </div>
+              <div class="flex justify-between text-[10px] text-farma-subtle font-mono pt-2 border-t border-farma-line/40">
+                <span class="">08:00</span>
+                <span class="">11:00</span>
+                <span class="">14:00</span>
+                <span class="">17:00</span>
+                <span class="">20:00</span>
+              </div>
+            </div>
+          </div>
+          <!-- Right Column: Real Catalog & Stock Signals (4 cols) -->
+          <div class="lg:col-span-4 flex flex-col justify-between rounded-xl border border-farma-line/60 bg-farma-bg-warm p-4 md:p-5">
+            <div>
+              <div class="flex items-center justify-between pb-3 mb-3 border-b border-farma-line">
+                <span class="text-xs font-semibold text-farma-black">Inventario en Mostrador</span>
+                <span class="text-[10px] text-farma-blue font-medium bg-farma-blue-tint px-2 py-0.5 rounded-full">Control por lote y caducidad</span>
+              </div>
+              <div class="space-y-2.5">
+                <div class="p-2.5 rounded-lg bg-white border border-farma-line/50 flex items-center justify-between text-xs">
+                  <div>
+                    <p class="font-medium text-farma-black">Paracetamol 500mg</p>
+                    <p class="text-[10px] text-farma-subtle">Caja 20 tabs · Lote P-882</p>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-medium text-farma-black">$38.00</p>
+                    <p class="text-[10px] text-farma-blue">42 en stock</p>
+                  </div>
+                </div>
+                <div class="p-2.5 rounded-lg bg-white border border-farma-line/50 flex items-center justify-between text-xs">
+                  <div>
+                    <p class="font-medium text-farma-black">Amoxicilina / Ác. Clavulánico</p>
+                    <p class="text-[10px] text-farma-subtle">875/125mg · Registro de folio</p>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-medium text-farma-black">$245.00</p>
+                    <p class="text-[10px] text-farma-muted">18 en stock</p>
+                  </div>
+                </div>
+                <div class="p-2.5 rounded-lg bg-white border border-farma-line/50 flex items-center justify-between text-xs">
+                  <div>
+                    <p class="font-medium text-farma-black">Omeprazol 20mg</p>
+                    <p class="text-[10px] text-farma-subtle">Caja 30 cápsulas</p>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-medium text-farma-black">$52.00</p>
+                    <p class="text-[10px] text-farma-blue">89 en stock</p>
+                  </div>
+                </div>
+                <div class="p-2.5 rounded-lg bg-white border border-farma-line/50 flex items-center justify-between text-xs">
+                  <div>
+                    <p class="font-medium text-farma-black">Losartán Potásico 50mg</p>
+                    <p class="text-[10px] text-farma-subtle">Caja 30 tabs</p>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-medium text-farma-black">$74.00</p>
+                    <p class="text-[10px] text-amber-600 font-medium">Reordenar (4)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-farma-line/70">
+              <div class="flex items-center gap-2 px-3 py-2 bg-white rounded-lg border border-farma-line text-[11px] text-farma-subtle">
+                <span class="material-symbols-outlined text-[15px]">search</span>
+                <span class="">Búsqueda por sustancia o código...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: ¿QUÉ ES FARMAOS Y LOS 3 PROBLEMAS QUE RESOLVEMOS? -->
+  <section class="py-20 md:py-24 px-6 bg-white border-t border-farma-line/60" id="que-es">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-16" id="problemas">
+        <p class="text-xs uppercase tracking-widest text-farma-blue font-semibold mb-3">¿Qué es farmaOs?</p>
+        <h2 class="text-3xl md:text-4xl font-normal tracking-tight text-farma-black mb-4">una operación más simple, desde el mostrador hasta la administración.</h2>
+        <p class="text-sm md:text-base text-farma-muted">
+          Un ERP enfocado en la simplicidad: elimina la fricción entre la caja, el anaquel y la administración del negocio.
+        </p>
+      </div>
+      <!-- 3 Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <!-- 1. Ventas y operación -->
+        <div class="p-7 md:p-8 rounded-2xl bg-farma-bg-warm border border-farma-line/70 flex flex-col justify-between hover:border-farma-blue/40 transition-colors">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-white border border-farma-line/80 flex items-center justify-center text-farma-black mb-5 shadow-sm">
+              <span class="material-symbols-outlined text-[22px]">point_of_sale</span>
+            </div>
+            <span class="text-[11px] font-mono uppercase text-farma-subtle tracking-wider">01 · Mostrador</span>
+            <h3 class="text-xl font-medium tracking-tight text-farma-black mt-2 mb-3">
+              Ventas y operación
+            </h3>
+            <p class="text-xs md:text-sm text-farma-muted leading-relaxed">
+              Atención rápida en mostrador, dispensación ágil sin fricciones y cobro fluido. Tu equipo atiende con seguridad, reduciendo tiempos de espera y errores de digitación.
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-farma-line/50 text-xs text-farma-black font-medium flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-farma-blue"></span>
+            <span class="">Flujo de mostrador ágil</span>
+          </div>
+        </div>
+        <!-- 2. Inventario y caducidades -->
+        <div class="p-7 md:p-8 rounded-2xl bg-farma-bg-warm border border-farma-line/70 flex flex-col justify-between hover:border-farma-blue/40 transition-colors">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-white border border-farma-line/80 flex items-center justify-center text-farma-black mb-5 shadow-sm">
+              <span class="material-symbols-outlined text-[22px]">inventory_2</span>
+            </div>
+            <span class="text-[11px] font-mono uppercase text-farma-subtle tracking-wider">02 · Almacén</span>
+            <h3 class="text-xl font-medium tracking-tight text-farma-black mt-2 mb-3">
+              Inventario y caducidades
+            </h3>
+            <p class="text-xs md:text-sm text-farma-muted leading-relaxed">
+              Herramientas de apoyo a la rotación FEFO para visibilidad de caducidades, existencias por lote y prevención oportuna de mermas en anaquel.
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-farma-line/50 text-xs text-farma-black font-medium flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-farma-blue"></span>
+            <span class="">Control FEFO y alertas de lote</span>
+          </div>
+        </div>
+        <!-- 3. Control y claridad del negocio -->
+        <div class="p-7 md:p-8 rounded-2xl bg-farma-bg-warm border border-farma-line/70 flex flex-col justify-between hover:border-farma-blue/40 transition-colors">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-white border border-farma-line/80 flex items-center justify-center text-farma-black mb-5 shadow-sm">
+              <span class="material-symbols-outlined text-[22px]">query_stats</span>
+            </div>
+            <span class="text-[11px] font-mono uppercase text-farma-subtle tracking-wider">03 · Negocio</span>
+            <h3 class="text-xl font-medium tracking-tight text-farma-black mt-2 mb-3">
+              Control y claridad
+            </h3>
+            <p class="text-xs md:text-sm text-farma-muted leading-relaxed">
+              Arqueos estructurados, conciliación de caja sin sobresaltos y visión nítida del desempeño de cada sucursal sin depender de hojas de cálculo dispersas.
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-farma-line/50 text-xs text-farma-black font-medium flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-farma-blue"></span>
+            <span class="">Cortes exactos y rentabilidad real</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: DEMOSTRACIÓN DE PRODUCTO -->
+  <section class="py-20 md:py-24 bg-farma-bg-warm border-t border-b border-farma-line/60" id="producto">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="mb-12 text-center max-w-2xl mx-auto">
+        <p class="text-xs uppercase tracking-widest text-farma-subtle font-medium mb-3">Capacidades del producto</p>
+        <h2 class="text-3xl md:text-4xl font-normal tracking-tight text-farma-black mb-3">
+          diseñado para el ritmo real del mostrador.
+        </h2>
+        <p class="text-sm md:text-base text-farma-muted">
+          Herramientas intuitivas creadas para operar sin fricción técnica.
+        </p>
+      </div>
+      <!-- Interactive flow tabs -->
+      <div class="flex justify-center mb-8 overflow-x-auto pb-2">
+        <div class="inline-flex p-1 bg-slate-200/60 rounded-xl gap-1 text-xs font-medium text-farma-muted" id="flowTabs">
+          <button class="tab-btn active px-4 py-2 rounded-lg transition-all" data-tab="0" onclick="switchTab(0)">Punto de Venta</button>
+          <button class="tab-btn px-4 py-2 rounded-lg transition-all" data-tab="1" onclick="switchTab(1)">Rotación y Lotes</button>
+          <button class="tab-btn px-4 py-2 rounded-lg transition-all" data-tab="2" onclick="switchTab(2)">Caja y Turnos</button>
+          <button class="tab-btn px-4 py-2 rounded-lg transition-all" data-tab="3" onclick="switchTab(3)">Consultorio adyacente (Opcional)</button>
+        </div>
+      </div>
+      <!-- Active Tab Display -->
+      <div class="bg-white rounded-2xl border border-farma-line p-6 md:p-10 shadow-sm" id="tabContent">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          <div class="md:col-span-5 space-y-4">
+            <span class="text-[11px] font-mono uppercase tracking-wider text-farma-blue font-semibold" id="tabLabel">Flujo 01 · Mostrador</span>
+            <h3 class="text-2xl font-medium tracking-tight text-farma-black" id="tabTitle">Dispensación en mostrador (Flujo ágil)</h3>
+            <p class="text-sm text-farma-muted leading-relaxed" id="tabDesc">
+              Búsqueda inmediata por sustancia activa, nombre comercial o lector de código de barras. Proceso de cobro limpio con registro detallado de cada movimiento.
+            </p>
+            <div class="pt-2 flex flex-col gap-2 text-xs text-farma-text" id="tabHighlights">
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-farma-blue"></span>
+                Compatible con lectores ópticos e impresoras de tickets térmicos
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-farma-blue"></span>
+                Verificación rápida de lote y existencia al escanear
+              </div>
+            </div>
+          </div>
+          <!-- Tab Visual Simulation -->
+          <div class="md:col-span-7 bg-farma-bg rounded-xl p-5 border border-farma-line/70">
+            <div class="bg-white rounded-lg p-5 border border-farma-line/50 shadow-sm space-y-4" id="tabVisual">
+              <div class="flex items-center justify-between pb-3 border-b border-farma-line/50">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-mono text-farma-subtle">Mostrador 01 · Ticket activo</span>
+                  <span class="text-[10px] font-mono text-farma-subtle bg-farma-bg px-1.5 py-0.5 rounded">Entorno demostrativo</span>
+                </div>
+                <span class="text-xs font-medium text-farma-blue bg-farma-blue-tint px-2 py-0.5 rounded">Listo para cobro</span>
+              </div>
+              <div class="space-y-2 text-xs">
+                <div class="flex justify-between py-1">
+                  <span class="text-farma-black font-medium">1 × Ketorolaco Sublingual 30mg</span>
+                  <span class="text-farma-black font-mono">$65.00</span>
+                </div>
+                <div class="flex justify-between py-1">
+                  <span class="text-farma-black font-medium">1 × Suero Oral Manzana 500ml</span>
+                  <span class="text-farma-black font-mono">$28.50</span>
+                </div>
+              </div>
+              <div class="pt-3 border-t border-farma-line flex justify-between items-center">
+                <span class="text-xs text-farma-muted">Total</span>
+                <span class="text-xl font-semibold text-farma-black font-mono">$93.50 MXN</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2 pt-1">
+                <button class="py-2 rounded-lg bg-farma-bg text-farma-black font-medium text-xs border border-farma-line">Efectivo ($100)</button>
+                <button class="py-2 rounded-lg bg-farma-blue hover:bg-farma-blue-dark text-white font-medium text-xs transition-colors">Cobrar e Imprimir</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><section class="py-20 md:py-24 bg-white border-b border-farma-line/60" id="ecosistema-clinico">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-clinic-tint border border-clinic-blue/20 rounded-full text-xs text-clinic-blue font-medium mb-3 shadow-sm">
+        <span class="w-1.5 h-1.5 rounded-full bg-clinic-blue"></span>
+        <span class="">Ecosistema Médico Integrado</span>
+      </div>
+      <p class="text-xs uppercase tracking-widest text-clinic-blue font-semibold mb-2">¿también tienes consultorio?</p>
+      <h2 class="text-3xl md:text-4xl font-normal tracking-tight text-farma-black mb-3">farmaOs Clinic</h2>
+      <p class="text-lg md:text-xl font-normal text-clinic-blue tracking-tight mb-3">menos administración. más consulta.</p>
+      <p class="text-sm md:text-base text-farma-muted leading-relaxed">
+        El mismo sistema operativo, en un contexto médico. Conecta la consulta del médico directamente con la farmacia adyacente sin duplicar pasos ni perder el hilo de la atención.
+      </p>
+    </div>
+
+    <!-- Clinic Feature Card -->
+    <div class="bg-farma-bg-warm rounded-2xl border border-farma-line/80 p-6 md:p-10 shadow-sm mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-5 space-y-5">
+          <div>
+            <span class="text-[11px] font-mono uppercase tracking-wider text-clinic-blue font-semibold">farmaOs Clinic · Activo</span>
+            <h3 class="text-2xl font-medium tracking-tight text-farma-black mt-1">Atención fluida, de la sala al mostrador</h3>
+          </div>
+          <p class="text-sm text-farma-muted leading-relaxed">
+            Diseñado para médicos en consultorios anexos o independientes. Agenda citas, registra antecedentes y emite recetas electrónicas conectadas con el catálogo de tu farmacia en tiempo real.
+          </p>
+          <div class="space-y-2.5 text-xs text-farma-text">
+            <div class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-clinic-blue"></span>
+              <span class="">Agenda ágil de pacientes y control de citas</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-clinic-blue"></span>
+              <span class="">Expediente clínico limpio y notas de evolución</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-clinic-blue"></span>
+              <span class="">Receta médica sincronizada con stock disponible</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-clinic-blue"></span>
+              <span class="">Historial clínico y seguimiento por paciente</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-7 bg-white rounded-xl p-5 border border-farma-line shadow-sm space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-farma-line/60">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-clinic-tint text-clinic-blue flex items-center justify-center font-medium text-xs">Dr</div>
+              <div>
+                <p class="text-xs font-semibold text-farma-black">Consulta General · Paciente #409</p>
+                <p class="text-[10px] text-farma-subtle font-mono">Dra. Marcela R. · Consultorio 1</p>
+              </div>
+            </div>
+            <span class="text-[11px] font-medium text-clinic-blue bg-clinic-tint px-2.5 py-1 rounded-full">En consulta</span>
+          </div>
+          <div class="p-3 bg-farma-bg-warm rounded-lg border border-farma-line/60 space-y-2 text-xs">
+            <div>
+              <span class="text-[10px] uppercase font-mono tracking-wider text-farma-subtle">Motivo de consulta &amp; Diagnóstico</span>
+              <p class="text-farma-black font-medium mt-0.5">Faringoamigdalitis aguda (J03.9)</p>
+            </div>
+            <p class="text-[11px] text-farma-muted">Fiebre de 38.2°C de 24 hrs de evolución con odinofagia. Signos vitales estables.</p>
+          </div>
+          <div class="space-y-2">
+            <span class="text-[10px] uppercase font-mono tracking-wider text-farma-subtle block">Prescripción Conectada a Farmacia</span>
+            <div class="p-2.5 bg-clinic-tint/30 rounded-lg border border-clinic-blue/20 flex items-center justify-between text-xs">
+              <div>
+                <p class="font-medium text-farma-black">Amoxicilina 500mg cápsulas</p>
+                <p class="text-[10px] text-farma-subtle">1 cada 8 hrs por 7 días</p>
+              </div>
+              <span class="text-[10px] font-mono text-clinic-blue bg-white px-2 py-0.5 rounded border border-clinic-blue/20 font-medium">En mostrador (28 disp.)</span>
+            </div>
+            <div class="p-2.5 bg-clinic-tint/30 rounded-lg border border-clinic-blue/20 flex items-center justify-between text-xs">
+              <div>
+                <p class="font-medium text-farma-black">Ibuprofeno 400mg tabletas</p>
+                <p class="text-[10px] text-farma-subtle">1 cada 8 hrs por 3 días (si hay dolor)</p>
+              </div>
+              <span class="text-[10px] font-mono text-clinic-blue bg-white px-2 py-0.5 rounded border border-clinic-blue/20 font-medium">En mostrador (42 disp.)</span>
+            </div>
+          </div>
+          <div class="pt-2 flex items-center justify-between border-t border-farma-line/50 text-[11px]">
+            <span class="text-farma-subtle">Receta digital lista para surtir en mostrador</span>
+            <span class="font-semibold text-clinic-blue">farmaOs Clinic · Activo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dental Feature Card -->
+    <div class="pt-12 border-t border-farma-line/70">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <span class="text-xs font-mono uppercase tracking-wider text-clinic-blue font-semibold">farmaOs Clinic · Módulo</span>
+        <h3 class="text-2xl md:text-3xl font-normal tracking-tight text-farma-black mt-1 mb-2">¿tu práctica es dental?</h3>
+        <p class="text-base md:text-lg font-medium text-clinic-blue tracking-tight mb-2">farmaOs Dental</p>
+        <p class="text-sm text-farma-muted italic font-medium">«lo que tiene. lo que necesita. lo que hiciste»</p>
+      </div>
+
+      <div class="bg-white rounded-xl border border-farma-line p-6 md:p-8 shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          <div class="md:col-span-5 space-y-4">
+            <div>
+              <h4 class="text-xl font-medium tracking-tight text-farma-black">Odontología sin enredos administrativos</h4>
+              <p class="text-xs md:text-sm text-farma-muted leading-relaxed mt-2">
+                Diseñado en torno a la realidad clínica del sillón dental. Una vista nítida y visual que responde al instante qué tiene el paciente, qué plan de tratamiento necesita y qué procedimiento realizaste hoy.
+              </p>
+            </div>
+            <div class="space-y-2 text-xs text-farma-text">
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-clinic-blue"></span>
+                <span class="font-medium text-farma-black">Lo que tiene:</span>
+                <span class="text-farma-muted">Odontograma interactivo y estado inicial</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-clinic-blue"></span>
+                <span class="font-medium text-farma-black">Lo que necesita:</span>
+                <span class="text-farma-muted">Presupuesto claro por fases y piezas</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-clinic-blue"></span>
+                <span class="font-medium text-farma-black">Lo que hiciste:</span>
+                <span class="text-farma-muted">Bitácora de procedimientos por cita y cobros</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:col-span-7 bg-farma-bg-warm rounded-xl p-5 border border-farma-line/70 space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-farma-line">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-semibold text-farma-black">Ficha Clínica Dental</span>
+                <span class="text-[10px] font-mono text-clinic-blue bg-clinic-tint px-2 py-0.5 rounded font-medium">Pieza 16 / 46</span>
+              </div>
+              <span class="text-[11px] text-farma-subtle font-mono">Tratamiento activo</span>
+            </div>
+            <div class="bg-white rounded-lg p-3.5 border border-farma-line/60 space-y-3">
+              <div class="flex items-center justify-around py-1 border-b border-farma-line/40 text-[11px] font-mono">
+                <div class="text-center">
+                  <div class="w-6 h-6 mx-auto rounded border border-clinic-blue bg-clinic-tint flex items-center justify-center text-clinic-blue font-semibold text-[10px]">16</div>
+                  <span class="text-[9px] text-clinic-blue mt-0.5 block">Resina</span>
+                </div>
+                <div class="text-center">
+                  <div class="w-6 h-6 mx-auto rounded border border-farma-line bg-farma-bg flex items-center justify-center text-farma-muted text-[10px]">15</div>
+                  <span class="text-[9px] text-farma-subtle mt-0.5 block">Sano</span>
+                </div>
+                <div class="text-center">
+                  <div class="w-6 h-6 mx-auto rounded border border-farma-line bg-farma-bg flex items-center justify-center text-farma-muted text-[10px]">14</div>
+                  <span class="text-[9px] text-farma-subtle mt-0.5 block">Sano</span>
+                </div>
+                <div class="text-center">
+                  <div class="w-6 h-6 mx-auto rounded border border-amber-600 bg-amber-50 flex items-center justify-center text-amber-600 font-semibold text-[10px]">46</div>
+                  <span class="text-[9px] text-amber-600 mt-0.5 block">Endo</span>
+                </div>
+              </div>
+              <div class="grid grid-cols-3 gap-2 text-center text-xs pt-1">
+                <div class="p-2 bg-farma-bg-warm rounded border border-farma-line/50">
+                  <span class="text-[10px] text-farma-subtle block uppercase font-mono">Lo que tiene</span>
+                  <span class="text-farma-black font-semibold text-[11px]">Caries oclusal</span>
+                </div>
+                <div class="p-2 bg-farma-bg-warm rounded border border-farma-line/50">
+                  <span class="text-[10px] text-farma-subtle block uppercase font-mono">Lo que necesita</span>
+                  <span class="text-clinic-blue font-semibold text-[11px]">Resina Estética</span>
+                </div>
+                <div class="p-2 bg-farma-bg-warm rounded border border-farma-line/50">
+                  <span class="text-[10px] text-farma-subtle block uppercase font-mono">Lo que hiciste</span>
+                  <span class="text-farma-black font-semibold text-[11px]">Obturación #16</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-between items-center text-xs pt-1">
+              <span class="text-farma-subtle text-[11px]">Presupuesto aceptado · 1 de 2 citas</span>
+              <span class="text-farma-black font-mono font-semibold">Saldo pendiente: $650.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- SECCIÓN: DISEÑADO PARA LA REALIDAD DE TU FARMACIA (El diferencial) -->
+  <section class="py-24 px-6 bg-white" id="diferencial">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="text-xs uppercase tracking-widest text-farma-blue font-semibold mb-3">El diferencial</p>
+        <h2 class="text-3xl md:text-5xl font-normal tracking-tight text-farma-black mb-4">
+          diseñado para la realidad de tu farmacia.
+        </h2>
+        <p class="text-sm md:text-base text-farma-muted leading-relaxed">
+          farmaOs no intenta hacer más complicado lo que ya haces todos los días. Lo diseñamos para que tu equipo pueda operar rápido, encontrar lo que necesita y tener claridad sobre lo que está pasando en el negocio.
+        </p>
+      </div>
+      <!-- 3 Pilares -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-8 rounded-2xl bg-farma-bg-warm border border-farma-line/70">
+          <span class="text-xs font-mono text-farma-blue font-semibold">01</span>
+          <h3 class="text-xl font-medium tracking-tight text-farma-black mt-3 mb-3">Simple</h3>
+          <p class="text-xs md:text-sm text-farma-muted leading-relaxed">Una interfaz pensada para que el equipo pueda aprender el flujo rápidamente. Menos pasos, menor fricción y operación continua sin complicaciones.</p>
+        </div>
+        <div class="p-8 rounded-2xl bg-farma-bg-warm border border-farma-line/70">
+          <span class="text-xs font-mono text-farma-blue font-semibold">02</span>
+          <h3 class="text-xl font-medium tracking-tight text-farma-black mt-3 mb-3">Hecho para México</h3>
+          <p class="text-xs md:text-sm text-farma-muted leading-relaxed">
+            Adaptado a los procesos y necesidades específicas del mostrador y la farmacia mexicana: catálogo por genéricos, patente, cortes de caja y dinámicas de sucursal.
+          </p>
+        </div>
+        <div class="p-8 rounded-2xl bg-farma-bg-warm border border-farma-line/70">
+          <span class="text-xs font-mono text-farma-blue font-semibold">03</span>
+          <h3 class="text-xl font-medium tracking-tight text-farma-black mt-3 mb-3">Una sola plataforma</h3>
+          <p class="text-xs md:text-sm text-farma-muted leading-relaxed">
+            Ventas, inventario, caja, personal y consultorio conectados en el mismo sistema, sin duplicar trabajo ni saltar entre múltiples hojas de cálculo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: FORMULARIO DE CAPTURA DE LEADS -->
+  <section class="py-24 px-6 bg-farma-bg-warm border-t border-farma-line/70" id="demo-form">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-8 pb-6 border-b border-farma-line/70">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-farma-line/80 rounded-full text-xs text-farma-muted shadow-sm mb-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-farma-blue"></span>
+          <span class="font-medium text-farma-black">Pensado para la operación real de farmacias mexicanas</span>
+        </div>
+        <p class="text-xs text-farma-subtle font-mono uppercase tracking-wider">ventas · inventario · caducidades · caja · sucursales</p>
+      </div>
+      <!-- Header del formulario -->
+      <div class="text-center mb-10">
+        <span class="text-xs uppercase tracking-widest text-farma-blue font-semibold mb-2 inline-block">Demostración en vivo</span>
+        <h2 class="text-3xl md:text-4xl font-normal tracking-tight text-farma-black mb-3">
+          ¿Quieres ver farmaOs en acción?
+        </h2>
+        <p class="text-sm md:text-base text-farma-muted">
+          Déjanos tus datos y te mostramos cómo funcionaría para tu farmacia o consultorio. Sin compromiso.
+        </p>
+      </div>
+      <!-- Form Container Card -->
+      <div class="bg-white rounded-2xl border border-farma-line p-6 md:p-10 shadow-sm" id="formWrapper">
+        <form class="space-y-6" id="leadForm" onsubmit="handleLeadSubmit(event)">
+          <input name="source" type="hidden" value="landing-oficial" class="">
+          <input name="campaign" type="hidden" value="web_directo" class="">
+          <!-- Nombre Completo -->
+          <div>
+            <label class="block text-xs font-medium text-farma-black mb-1.5" for="fullName">
+              Nombre completo <span class="text-farma-blue">*</span>
+            </label>
+            <input class="w-full px-4 py-2.5 rounded-xl text-xs md:text-sm border border-farma-line bg-farma-bg-warm focus:bg-white focus:outline-none focus:border-farma-blue text-farma-black transition-colors" id="fullName" name="fullName" placeholder="Ej. Dr. Alejandro Méndez" required="" type="text">
+          </div>
+          <!-- Farmacia o Consultorio (Nombre del negocio) -->
+          <div class="">
+            <label class="block text-xs font-medium text-farma-black mb-1.5" for="businessName">
+              Farmacia o Consultorio (Nombre del negocio) <span class="text-farma-blue">*</span>
+            </label>
+            <input class="w-full px-4 py-2.5 rounded-xl text-xs md:text-sm border border-farma-line bg-farma-bg-warm focus:bg-white focus:outline-none focus:border-farma-blue text-farma-black transition-colors" id="businessName" name="businessName" placeholder="Ej. Farmacias Santa María / Consultorio San José" required="" type="text">
+          </div>
+          <!-- WhatsApp y Correo en 2 cols -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-farma-black mb-1.5" for="whatsapp">
+                WhatsApp / Teléfono <span class="text-farma-blue">*</span>
+              </label>
+              <input class="w-full px-4 py-2.5 rounded-xl text-xs md:text-sm border border-farma-line bg-farma-bg-warm focus:bg-white focus:outline-none focus:border-farma-blue text-farma-black transition-colors" id="whatsapp" name="whatsapp" placeholder="55 1234 5678" required="" type="tel">
+            </div>
+            <div class="">
+              <label class="block text-xs font-medium text-farma-black mb-1.5" for="email">
+                Correo electrónico (opcional)
+              </label>
+              <input class="w-full px-4 py-2.5 rounded-xl text-xs md:text-sm border border-farma-line bg-farma-bg-warm focus:bg-white focus:outline-none focus:border-farma-blue text-farma-black transition-colors" id="email" name="email" placeholder="ejemplo@farmacia.com" type="email">
+            </div>
+          </div>
+          <!-- Tipo de negocio (Pills) -->
+          <div class="">
+            <label class="block text-xs font-medium text-farma-black mb-2">
+              Tipo de negocio <span class="text-farma-blue">*</span>
+            </label>
+            <div class="grid grid-cols-3 gap-2">
+              <div>
+                <input checked="" class="pill-radio hidden" id="type-farmacia" name="businessType" type="radio" value="Farmacia">
+                <label class="block text-center px-3 py-2.5 rounded-xl text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer hover:border-farma-black transition-all" for="type-farmacia">
+                  Farmacia
+                </label>
+              </div>
+              <div>
+                <input class="pill-radio hidden" id="type-consultorio" name="businessType" type="radio" value="Consultorio">
+                <label class="block text-center px-3 py-2.5 rounded-xl text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer hover:border-farma-black transition-all" for="type-consultorio">
+                  Consultorio
+                </label>
+              </div>
+              <div>
+                <input class="pill-radio hidden" id="type-ambos" name="businessType" type="radio" value="Farmacia + Consultorio">
+                <label class="block text-center px-3 py-2.5 rounded-xl text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer hover:border-farma-black transition-all" for="type-ambos">
+                  Ambos
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- Número de sucursales / ubicaciones -->
+          <div class="">
+            <label class="block text-xs font-medium text-farma-black mb-2">
+              Número de sucursales / ubicaciones <span class="text-farma-blue">*</span>
+            </label>
+            <div class="grid grid-cols-3 gap-2">
+              <div>
+                <input checked="" class="pill-radio hidden" id="suc-1" name="branches" type="radio" value="1">
+                <label class="block text-center px-3 py-2.5 rounded-xl text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer hover:border-farma-black transition-all" for="suc-1">
+                  1 sucursal
+                </label>
+              </div>
+              <div class="">
+                <input class="pill-radio hidden" id="suc-2-5" name="branches" type="radio" value="2 a 5">
+                <label class="block text-center px-3 py-2.5 rounded-xl text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer hover:border-farma-black transition-all" for="suc-2-5">
+                  2 a 5
+                </label>
+              </div>
+              <div class="">
+                <input class="pill-radio hidden" id="suc-more" name="branches" type="radio" value="más de 5">
+                <label class="block text-center px-3 py-2.5 rounded-xl text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer hover:border-farma-black transition-all" for="suc-more">
+                  Más de 5
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- ¿Qué te gustaría mejorar? -->
+          <div class="">
+            <label class="block text-xs font-medium text-farma-black mb-2">
+              ¿Qué te gustaría mejorar? (Selecciona una o más)
+            </label>
+            <div class="flex flex-wrap gap-2">
+              <div>
+                <input class="pill-check hidden" id="interest-pos" name="improvements" type="checkbox" value="Punto de venta / POS">
+                <label class="inline-block px-3 py-1.5 rounded-lg text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer transition-all" for="interest-pos">
+                  Punto de venta / POS
+                </label>
+              </div>
+              <div>
+                <input class="pill-check hidden" id="interest-inventario" name="improvements" type="checkbox" value="Inventario">
+                <label class="inline-block px-3 py-1.5 rounded-lg text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer transition-all" for="interest-inventario">
+                  Inventario
+                </label>
+              </div>
+              <div>
+                <input class="pill-check hidden" id="interest-caducidades" name="improvements" type="checkbox" value="Caducidades">
+                <label class="inline-block px-3 py-1.5 rounded-lg text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer transition-all" for="interest-caducidades">
+                  Caducidades
+                </label>
+              </div>
+              <div class="">
+                <input class="pill-check hidden" id="interest-operacion" name="improvements" type="checkbox" value="Operación general">
+                <label class="inline-block px-3 py-1.5 rounded-lg text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer transition-all" for="interest-operacion">
+                  Operación general
+                </label>
+              </div>
+              <div class="">
+                <input class="pill-check hidden" id="interest-clinica" name="improvements" type="checkbox" value="Gestión clínica">
+                <label class="inline-block px-3 py-1.5 rounded-lg text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer transition-all" for="interest-clinica">
+                  Gestión clínica
+                </label>
+              </div>
+              <div class="">
+                <input class="pill-check hidden" id="interest-otro" name="improvements" type="checkbox" value="Otro">
+                <label class="inline-block px-3 py-1.5 rounded-lg text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer transition-all" for="interest-otro">
+                  Otro
+                </label>
+              </div>
+            <div class=""><input class="pill-check hidden" id="interest-dental" name="improvements" type="checkbox" value="farmaOs Dental"><label class="inline-block px-3 py-1.5 rounded-lg text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer transition-all" for="interest-dental">farmaOs Dental</label></div></div>
+          </div>
+          <!-- Submit Button -->
+          <div class="pt-3">
+            <button class="w-full py-3.5 px-6 rounded-full bg-farma-blue hover:bg-farma-blue-dark text-white font-medium text-sm transition-all shadow-sm flex items-center justify-center gap-2 group cursor-pointer" id="submitBtn" type="submit" onclick="if(this.form.checkValidity()){ this.disabled = true; this.innerHTML = '&lt;span class=&quot;inline-block animate-pulse&quot;&gt;Enviando información...&lt;/span&gt;'; this.form.requestSubmit(); }">
+              <span class="">Quiero conocer farmaOs</span>
+              <span class="group-hover:translate-x-0.5 transition-transform">→</span>
+            </button>
+          </div>
+          <!-- Microcopy -->
+          <p class="text-[11px] text-farma-subtle text-center leading-relaxed">
+            Sin compromiso. Respetamos tu privacidad. Tus datos se utilizan únicamente para contactarte y coordinar tu demostración; no se comparten con terceros. Puedes pedir su eliminación escribiendo a <a class="underline" href="mailto:hola@frmos.io">hola@frmos.io</a>.
+          </p>
+        </form>
+        <!-- Success Message State (Hidden by default) -->
+        <div class="hidden py-12 px-4 text-center space-y-4" id="successState">
+          <div class="w-14 h-14 mx-auto rounded-full bg-farma-blue-tint text-farma-blue flex items-center justify-center">
+            <span class="material-symbols-outlined text-[32px]">check_circle</span>
+          </div>
+          <h3 class="text-2xl font-medium tracking-tight text-farma-black">¡Listo! Recibimos tus datos.</h3>
+          <p class="text-sm text-farma-muted max-w-md mx-auto leading-relaxed">Te contactaremos para coordinar tu demo de farmaOs. La información fue registrada correctamente.</p>
+          <div class="pt-4">
+            <a class="inline-flex items-center gap-2 text-xs font-semibold text-farma-black hover:text-farma-blue underline" href="#producto">
+              Volver a ver las funciones del sistema
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-farma-bg-warm border-t border-farma-line py-14 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-10 border-b border-farma-line/70">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <a class="flex items-center select-none" href="#">
+            <svg class="h-6 w-auto" fill="none" viewBox="0 0 2174 776" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1664.61 241.921C1748.95 239.276 1819.57 305.298 1822.6 389.626C1825.62 473.954 1759.92 544.867 1675.61 548.275C1590.75 551.703 1519.29 485.489 1516.24 400.62C1513.19 315.752 1579.73 244.584 1664.61 241.921ZM1677.61 484.823C1727.35 480.315 1764.04 436.37 1759.6 386.622C1755.16 336.875 1711.26 300.124 1661.51 304.498C1611.66 308.881 1574.82 352.878 1579.27 402.721C1583.72 452.564 1627.77 489.34 1677.61 484.823Z" fill="#0E6AF2" class=""></path>
+              <path d="M964.034 319.446C979.473 318.711 1012.33 325.327 1023.78 334.807C1055.62 361.165 1040.79 349.028 1072.23 331.556C1087.46 323.244 1104.55 318.925 1121.9 319.001C1147.6 319.018 1172.52 327.186 1191.07 345.42C1217.15 371.066 1213.18 409.631 1213.18 443.171L1212.83 523.769C1191.44 524.527 1167.11 523.997 1145.5 524.011C1145.64 521.468 1145.72 518.922 1145.74 516.375C1146.16 492.295 1146.41 468.211 1146.51 444.127C1146.54 430.164 1147.08 416.438 1144.92 402.442C1140.47 372.978 1097.86 364.095 1078.53 383.891C1070.09 392.534 1064.2 405.88 1064.01 417.908C1063.65 440.597 1063.78 463.692 1063.8 486.369L1063.83 523.855C1042.38 524.305 1016.85 523.863 995.395 523.486L995.775 452.876C995.909 436.131 997.406 415.97 993.151 399.823C985.072 369.657 940.477 364.49 920.158 384.16C901.074 402.635 905.444 434.794 905.568 459.445C905.712 480.784 905.636 502.124 905.342 523.462C883.424 524.344 856.827 523.636 834.736 523.582L834.514 326.113C851.809 325.701 884.657 325.924 901.41 327.076C901.722 332.18 901.638 338.591 901.715 343.804C919.858 326.351 939.348 320.881 964.034 319.446Z" fill="#0E6AF2" class=""></path>
+              <path d="M474.268 318.383C505.057 316.654 521.687 323.133 547.409 337.755C547.468 333.93 547.319 331.527 548.579 327.852C552.834 324.874 609.525 326.357 619.496 326.551C620.131 345.77 619.131 369.423 619.122 389.129L619.575 523.36C595.235 523.424 570.894 523.342 546.554 523.116L547.196 508.743C540.209 513.883 536.42 516.4 528.879 520.77C518.177 526.655 500.691 530.425 488.61 531.335C457.908 533.531 427.61 523.304 404.52 502.949C382.995 484.332 372.427 459.29 370.454 431.208C365.935 366.882 411.709 322.828 474.268 318.383ZM501.548 473.779C529.565 469.146 548.553 442.719 544.005 414.688C539.457 386.657 513.089 367.589 485.044 372.051C456.878 376.532 437.708 403.04 442.276 431.193C446.843 459.345 473.41 478.433 501.548 473.779Z" fill="#0E6AF2" class=""></path>
+              <path d="M1330.27 320.412C1353 317.746 1377.64 320.815 1397.87 331.754C1401.31 333.612 1406.2 336.606 1410.06 336.738C1412.46 334.934 1411.25 332.964 1412.18 328.285C1416.67 324.953 1473.84 326.477 1483.19 326.671C1484.45 344.814 1483.81 372.407 1483.9 391.588C1484.16 435.641 1484.03 479.695 1483.51 523.746C1464.85 524.768 1432.5 523.772 1413.08 523.029C1410.59 522.933 1412.93 515.904 1411.36 512.792C1408.5 512.501 1404.09 515.912 1401.41 517.606C1336.51 553.439 1255.74 519.452 1240.15 445.61C1230.03 397.666 1255.06 346.949 1300.5 328.473C1310.55 324.387 1319.54 322.258 1330.27 320.412ZM1367.54 475.377C1395.87 470.418 1414.86 443.501 1410.03 415.155C1405.2 386.808 1378.37 367.694 1350.01 372.39C1321.45 377.116 1302.18 404.161 1307.04 432.693C1311.9 461.226 1339.03 480.368 1367.54 475.377Z" fill="#0E6AF2" class=""></path>
+              <path d="M329.781 232.449C341.696 231.287 355.058 231.517 366.993 231.761C366.804 249.962 366.813 268.164 367.02 286.364C333.844 286.953 316.054 293.554 315.887 329.894C326.144 330.508 336.62 329.818 347.405 330.575C347.517 349.392 347.85 368.208 348.407 387.017C337.804 387.257 327.199 387.418 316.593 387.498C316.286 430.321 315.629 480.947 317.442 523.148C307.485 523.348 297.235 523.286 287.25 523.349L245.959 523.274C246.496 480.424 246.434 430.771 245.565 388.033C236.432 387.418 223.799 387.628 214.455 387.538C214.952 368.2 215.126 348.855 214.978 329.511C225.318 329.313 235.661 329.254 246.002 329.332C245.983 304.573 247.341 287.228 263.647 266.694C280.993 244.851 302.828 235.692 329.781 232.449Z" fill="#0E6AF2" class=""></path>
+              <path d="M1930.83 310.439C1961.19 309.345 1988.51 315.336 2015.46 329.48C2011.14 341.424 2003.89 355.624 1997.43 366.489C1983.86 361.316 1933.49 338.573 1930.77 369.034C1930.47 384.218 1952.42 390.007 1963.09 393.779C1981.22 400.426 2005.71 408.426 2017.91 423.951C2047.81 461.999 2028.52 516.526 1981.21 528.075C1958.44 533.631 1950.46 535.177 1927.62 533.276C1898.74 530.538 1873.69 518.848 1850.02 502.548C1858.96 488.322 1865.26 476.115 1873.05 461.205C1892.13 474.424 1913.53 485.986 1937.62 484.509C1943.27 484.266 1951.38 481.698 1954.73 476.835C1975.43 446.365 1926.53 440.589 1908.52 432.123C1906.39 431.352 1904.24 430.324 1902.15 429.508C1880.05 420.875 1860.88 405.586 1858.57 380.447C1857.24 365.916 1862.02 346.702 1871.35 335.197C1885.8 317.4 1909.48 312.639 1930.83 310.439Z" fill="#0E6AF2" class=""></path>
+              <path d="M773.357 324.521C780.351 324.433 787.347 324.457 794.341 324.59C795.698 342.273 793.749 362.748 795.087 381.804C765.658 378.376 735.012 380.191 727.922 414.896C725.486 426.822 726.683 443.187 726.692 455.623C726.565 478.153 726.725 500.683 727.172 523.209C706.98 523.912 683.224 523.328 662.749 523.351L658.993 522.753C658.653 522.27 657.978 521.553 657.777 521.028C655.661 515.491 656.5 342.446 657.458 326.67C678.081 325.468 704.714 326 725.564 326.409L725.253 342.8C741.225 330.922 753.462 325.264 773.357 324.521Z" fill="#0E6AF2" class=""></path>
+            </svg>
+          </a>
+          
+        </div>
+        <p class="text-xs text-farma-muted mt-1 max-w-sm">
+          ERP y software operativo para farmacias y consultorios en México.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-6 text-xs text-farma-muted">
+        <a class="hover:text-farma-black transition-colors" href="#que-es">¿Qué es?</a>
+        <a class="hover:text-farma-black transition-colors" href="#problemas">Problemas</a>
+        <a class="hover:text-farma-black transition-colors" href="#producto">Producto</a>
+        <a class="hover:text-farma-black transition-colors" href="#diferencial">Diferencial</a>
+        <a class="hover:text-farma-black transition-colors" href="#demo-form">Agendar Demo</a>
+      </div>
+    </div>
+    <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-[11px] text-farma-subtle gap-3">
+      <p class="">farmaOs · Todos los derechos reservados 2026.</p>
+      <div class="flex items-center gap-3"><a class="text-farma-subtle hover:text-farma-black underline transition-colors mr-2" href="#" onclick="alert('Aviso de Privacidad (LFPDPPP): farmaOs y frmos.io tratan sus datos únicamente con fines de contacto, demostración comercial del software operativo y atención al cliente. En cualquier momento puede ejercer sus derechos ARCO escribiendo a hola@frmos.io.'); return false;">Aviso de Privacidad (LFPDPPP)</a><span class="text-farma-line hidden sm:inline">|</span>
+        <span class="flex items-center gap-1 text-farma-blue font-medium"><span class="w-1.5 h-1.5 rounded-full bg-farma-blue"></span> Atención y soporte en todo México</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- BOTÓN FLOTANTE MÓVIL (Fixed Bottom CTA) -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 p-3 bg-white/95 backdrop-blur-md border-t border-farma-line z-50">
+  <a class="w-full py-3 px-4 rounded-full bg-farma-blue hover:bg-farma-blue-dark text-white font-medium text-xs flex items-center justify-center gap-2 shadow-lg tracking-tight" href="#demo-form">
+    <span class="">Agendar una demo</span>
+    <span class="text-[10px]">→</span>
+  </a>
+</div>
+
+<!-- Interactive Product Demo Scripts -->
+<script class="">
+  const tabsData = [
+    {
+      label: "Flujo 01 · Mostrador",
+      title: "Dispensación en mostrador (Flujo ágil)",
+      desc: "Búsqueda inmediata por sustancia activa, nombre comercial o lector de código de barras. Proceso de cobro limpio con registro detallado de cada movimiento.",
+      highlights: [
+        "Compatible con lectores ópticos e impresoras de tickets térmicos",
+        "Verificación rápida de lote y existencia al escanear"
+      ],
+      render: `
+        <div class="flex items-center justify-between pb-3 border-b border-farma-line/50">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono text-farma-subtle">Mostrador 01 · Ticket activo</span>
+            <span class="text-[10px] font-mono text-farma-subtle bg-farma-bg px-1.5 py-0.5 rounded">Entorno demostrativo</span>
+          </div>
+          <span class="text-xs font-medium text-farma-blue bg-farma-blue-tint px-2 py-0.5 rounded">Listo para cobro</span>
+        </div>
+        <div class="space-y-2 text-xs">
+          <div class="flex justify-between py-1">
+            <span class="text-farma-black font-medium">1 × Ketorolaco Sublingual 30mg</span>
+            <span class="text-farma-black font-mono">$65.00</span>
+          </div>
+          <div class="flex justify-between py-1">
+            <span class="text-farma-black font-medium">1 × Suero Oral Manzana 500ml</span>
+            <span class="text-farma-black font-mono">$28.50</span>
+          </div>
+        </div>
+        <div class="pt-3 border-t border-farma-line flex justify-between items-center">
+          <span class="text-xs text-farma-muted">Total</span>
+          <span class="text-xl font-semibold text-farma-black font-mono">$93.50 MXN</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2 pt-1">
+          <button class="py-2 rounded-lg bg-farma-bg text-farma-black font-medium text-xs border border-farma-line">Efectivo ($100)</button>
+          <button class="py-2 rounded-lg bg-farma-blue hover:bg-farma-blue-dark text-white font-medium text-xs transition-colors">Cobrar e Imprimir</button>
+        </div>
+      `
+    },
+    {
+      label: "Flujo 02 · Almacén",
+      title: "Rotación FEFO y lotes en orden",
+      desc: "Herramientas de apoyo a la rotación FEFO para visibilidad de caducidades en cada movimiento, manteniendo un registro claro de tus anaqueles.",
+      highlights: [
+        "Alertas preventivas de vencimiento por lote",
+        "Control demostrativo de existencias por fecha de caducidad"
+      ],
+      render: `
+        <div class="flex items-center justify-between pb-3 border-b border-farma-line/50">
+          <span class="text-xs font-semibold text-farma-black">Rotación de Lotes Activa</span>
+          <span class="text-[10px] font-mono text-farma-subtle bg-farma-bg px-1.5 py-0.5 rounded">Catálogo demostrativo</span>
+        </div>
+        <div class="space-y-2 text-xs">
+          <div class="p-2.5 bg-farma-bg-warm rounded border border-farma-line/60 flex justify-between items-center">
+            <div>
+              <p class="font-medium text-farma-black">Metformina 850mg (40 tabs)</p>
+              <p class="text-[10px] text-farma-subtle">Lote MF-204 · Prioridad 1</p>
+            </div>
+            <span class="text-[11px] font-mono text-farma-blue bg-farma-blue-tint px-2 py-0.5 rounded">FEFO OK</span>
+          </div>
+          <div class="p-2.5 bg-farma-bg-warm rounded border border-farma-line/60 flex justify-between items-center">
+            <div>
+              <p class="font-medium text-farma-black">Loratadina 10mg (10 tabs)</p>
+              <p class="text-[10px] text-farma-subtle">Lote LT-991 · Prioridad 2</p>
+            </div>
+            <span class="text-[11px] font-mono text-farma-blue bg-farma-blue-tint px-2 py-0.5 rounded">FEFO OK</span>
+          </div>
+        </div>
+      `
+    },
+    {
+      label: "Flujo 03 · Control de Caja",
+      title: "Arqueo sereno y transparente",
+      desc: "Cierres de turno con conteo sistemático para evitar discrepancias. Desglose claro entre efectivo, transferencias y pagos con tarjeta.",
+      highlights: [
+        "Cierre estructurado por denominaciones",
+        "Historial auditado por cajero y sucursal"
+      ],
+      render: `
+        <div class="space-y-2.5 text-xs">
+          <div class="flex justify-between pb-2 border-b border-farma-line">
+            <span class="font-medium text-farma-black">Cierre de Turno</span>
+            <span class="text-farma-blue font-medium">Turno Matutino</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 text-[11px] font-mono">
+            <div class="p-2 bg-farma-bg rounded">Billetes: $6,000.00</div>
+            <div class="p-2 bg-farma-bg rounded">Monedas: $420.00</div>
+            <div class="p-2 bg-farma-bg rounded">Tarjeta: $2,800.00</div>
+            <div class="p-2 bg-farma-bg rounded">Transferencia: $1,000.00</div>
+          </div>
+          <div class="p-2.5 bg-farma-blue-tint text-farma-blue rounded text-center font-medium text-xs">
+            Arqueo estructurado y desglose conciliado (Demostración)
+          </div>
+        </div>
+      `
+    },
+    {
+      label: "Flujo 04 · farmaOs Clínica",
+      title: "Menos administración, más consulta",
+      desc: "El consultorio adyacente prescribe y conoce la existencia demostrada en mostrador. El paciente pasa directamente a la farmacia con receta clara.",
+      highlights: [
+        "Expediente ágil y receta sincronizada",
+        "Disponibilidad de medicamentos en tiempo real"
+      ],
+      render: `
+        <div class="space-y-2.5 text-xs">
+          <div class="flex justify-between items-center pb-2 border-b border-farma-line/40">
+            <div>
+              <p class="font-semibold text-farma-black">Consulta General</p>
+              <p class="text-[10px] text-farma-subtle">Receta Digital Sincronizada (Demostración)</p>
+            </div>
+            <span class="text-[10px] font-mono text-clinic-blue bg-clinic-tint px-2 py-0.5 rounded">En Mostrador</span>
+          </div>
+          <div class="p-2.5 bg-clinic-tint/40 rounded border border-clinic-blue/20">
+            <div class="flex justify-between font-medium text-farma-black text-[11px]">
+              <span>Cefalexina 500mg cápsulas</span>
+              <span class="text-clinic-blue">Disponible (14)</span>
+            </div>
+            <p class="text-[10px] text-farma-muted mt-1">1 cada 8 hrs por 7 días.</p>
+          </div>
+        </div>
+      `
+    }
+  ];
+
+  function switchTab(index) {
+    const buttons = document.querySelectorAll('#flowTabs .tab-btn');
+    buttons.forEach((btn, idx) => {
+      if (idx === index) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+    const data = tabsData[index];
+    document.getElementById('tabLabel').textContent = data.label;
+    document.getElementById('tabTitle').textContent = data.title;
+    document.getElementById('tabDesc').textContent = data.desc;
+    
+    let highlightsHtml = '';
+    data.highlights.forEach(h => {
+      highlightsHtml += `
+        <div class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-farma-blue"></span>
+          ${h}
+        </div>
+      `;
+    });
+    document.getElementById('tabHighlights').innerHTML = highlightsHtml;
+    document.getElementById('tabVisual').innerHTML = data.render;
+  }
+
+  const GOOGLE_SCRIPT_URL = "PEGA_AQUI_URL_APPS_SCRIPT";
+  async function handleLeadSubmit(event) {
+    event.preventDefault();
+    const form = event.target, btn = document.getElementById('submitBtn');
+    const fd = new FormData(form);
+    const data</script>
+
+</body></html>
