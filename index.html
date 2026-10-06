@@ -812,8 +812,9 @@
   </a>
 </div>
 
-<!-- Interactive Product Demo Scripts -->
-<script class="">
+<!-- Interactive Product Demo & Lead Submission Scripts -->
+<script>
+  // 1. Datos e interactividad para la demo de flujos
   const tabsData = [
     {
       label: "Flujo 01 · Mostrador",
@@ -846,8 +847,8 @@
           <span class="text-xl font-semibold text-farma-black font-mono">$93.50 MXN</span>
         </div>
         <div class="grid grid-cols-2 gap-2 pt-1">
-          <button class="py-2 rounded-lg bg-farma-bg text-farma-black font-medium text-xs border border-farma-line">Efectivo ($100)</button>
-          <button class="py-2 rounded-lg bg-farma-blue hover:bg-farma-blue-dark text-white font-medium text-xs transition-colors">Cobrar e Imprimir</button>
+          <button type="button" class="py-2 rounded-lg bg-farma-bg text-farma-black font-medium text-xs border border-farma-line">Efectivo ($100)</button>
+          <button type="button" class="py-2 rounded-lg bg-farma-blue hover:bg-farma-blue-dark text-white font-medium text-xs transition-colors">Cobrar e Imprimir</button>
         </div>
       `
     },
@@ -946,6 +947,7 @@
         btn.classList.remove('active');
       }
     });
+
     const data = tabsData[index];
     document.getElementById('tabLabel').textContent = data.label;
     document.getElementById('tabTitle').textContent = data.title;
@@ -956,7 +958,7 @@
       highlightsHtml += `
         <div class="flex items-center gap-2">
           <span class="w-1.5 h-1.5 rounded-full bg-farma-blue"></span>
-          ${h}
+          <span>${h}</span>
         </div>
       `;
     });
@@ -964,11 +966,56 @@
     document.getElementById('tabVisual').innerHTML = data.render;
   }
 
+  // 2. Conexión con Google Sheets
+  // REEMPLAZA "PEGA_AQUI_URL_APPS_SCRIPT" POR TU URL DE GOOGLE APPS SCRIPT
   const GOOGLE_SCRIPT_URL = "PEGA_AQUI_URL_APPS_SCRIPT";
+
   async function handleLeadSubmit(event) {
     event.preventDefault();
-    const form = event.target, btn = document.getElementById('submitBtn');
+    const form = event.target;
+    const btn = document.getElementById('submitBtn');
+
+    // Cambiar estado del botón mientras se envía
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<span>Enviando...</span>';
+    }
+
     const fd = new FormData(form);
-    const data</script>
+    const data = Object.fromEntries(fd.entries());
+
+    // Obtener casillas seleccionadas de "Áreas a mejorar"
+    const improvements = Array.from(form.querySelectorAll('input[name="improvements"]:checked'))
+      .map(cb => cb.value);
+    data.improvements = improvements.join(', ');
+
+    try {
+      if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== "PEGA_AQUI_URL_APPS_SCRIPT") {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+      }
+
+      // Ocultar el formulario y mostrar el mensaje de éxito
+      const leadForm = document.getElementById('leadForm');
+      const successState = document.getElementById('successState');
+
+      if (leadForm) leadForm.classList.add('hidden');
+      if (successState) successState.classList.remove('hidden');
+
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+      alert('Hubo un inconveniente al enviar la información. Por favor, intenta de nuevo.');
+      
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = '<span>Quiero conocer farmaOs</span><span class="group-hover:translate-x-0.5 transition-transform">→</span>';
+      }
+    }
+  }
+</script>
 
 </body></html>
