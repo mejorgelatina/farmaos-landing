@@ -966,12 +966,12 @@
     document.getElementById('tabVisual').innerHTML = data.render;
   }
 
-  // 2. Conexión con Google Sheets
-  // REEMPLAZA "PEGA_AQUI_URL_APPS_SCRIPT" POR TU URL DE GOOGLE APPS SCRIPT
-  const GOOGLE_SCRIPT_URL = "PEGA_AQUI_URL_APPS_SCRIPT";
+    // 2. Conexión con Google Sheets
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxujx2oACqvUF10ElPefzUA8swWMJDeC8Gl05XYuB3kgfusOu7iROqRZzM9DNiMp-KR/exec";
 
   async function handleLeadSubmit(event) {
     event.preventDefault();
+
     const form = event.target;
     const btn = document.getElementById('submitBtn');
 
@@ -982,22 +982,39 @@
     }
 
     const fd = new FormData(form);
-    const data = Object.fromEntries(fd.entries());
+
+    // Obtener valores del formulario
+    const fullName = fd.get('fullName') || '';
+    const businessName = fd.get('businessName') || '';
+    const whatsapp = fd.get('whatsapp') || '';
+    const email = fd.get('email') || '';
+    const businessType = fd.get('businessType') || '';
+    const branches = fd.get('branches') || '';
 
     // Obtener casillas seleccionadas de "Áreas a mejorar"
-    const improvements = Array.from(form.querySelectorAll('input[name="improvements"]:checked'))
-      .map(cb => cb.value);
-    data.improvements = improvements.join(', ');
+    const improvements = Array.from(
+      form.querySelectorAll('input[name="improvements"]:checked')
+    )
+      .map(cb => cb.value)
+      .join(', ');
+
+    // Crear payload usando EXACTAMENTE los nombres de las columnas del Google Sheet
+    const payload = new URLSearchParams();
+
+    payload.append('nombre', fullName);
+    payload.append('negocio', businessName);
+    payload.append('whatsapp', whatsapp);
+    payload.append('correo', email);
+    payload.append('tipo de negocio', businessType);
+    payload.append('sucursales', branches);
+    payload.append('areas a mejorar', improvements);
 
     try {
-      if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== "PEGA_AQUI_URL_APPS_SCRIPT") {
-        await fetch(GOOGLE_SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-      }
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: payload
+      });
 
       // Ocultar el formulario y mostrar el mensaje de éxito
       const leadForm = document.getElementById('leadForm');
@@ -1008,14 +1025,20 @@
 
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
-      alert('Hubo un inconveniente al enviar la información. Por favor, intenta de nuevo.');
-      
+
+      alert(
+        'Hubo un inconveniente al enviar la información. Por favor, intenta de nuevo.'
+      );
+
       if (btn) {
         btn.disabled = false;
-        btn.innerHTML = '<span>Quiero conocer farmaOs</span><span class="group-hover:translate-x-0.5 transition-transform">→</span>';
+        btn.innerHTML =
+          '<span>Quiero conocer farmaOs</span>' +
+          '<span class="group-hover:translate-x-0.5 transition-transform">→</span>';
       }
     }
   }
+
 </script>
 
 </body></html>
