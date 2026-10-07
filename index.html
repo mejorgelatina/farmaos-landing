@@ -30,6 +30,25 @@
     }
   }catch(_e){}</script><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
+
+<style>
+  /* farmaOs form controls */
+  .pill-check + label, .pill-radio + label {
+    border-color: #E5E5EA;
+    background: #F9F9F7;
+    color: #6E6E73;
+  }
+  .pill-check:checked + label, .pill-radio:checked + label {
+    border-color: #0E6AF2 !important;
+    background: #EBF2FE !important;
+    color: #0B55C4 !important;
+    box-shadow: 0 0 0 1px #0E6AF2 inset;
+  }
+  .pill-check:focus-visible + label, .pill-radio:focus-visible + label {
+    outline: 2px solid #0E6AF2;
+    outline-offset: 2px;
+  }
+</style>
 <header class="w-full sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-farma-line/80">
   <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
     <div class="flex items-center gap-6 md:gap-10">
@@ -645,19 +664,19 @@
             </label>
             <div class="grid grid-cols-3 gap-2">
               <div>
-                <input checked="" class="pill-radio hidden" id="type-farmacia" name="businessType" type="radio" value="Farmacia">
+                <input checked="" class="pill-radio sr-only" id="type-farmacia" name="businessType" type="radio" value="Farmacia">
                 <label class="block text-center px-3 py-2.5 rounded-xl text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer hover:border-farma-black transition-all" for="type-farmacia">
                   Farmacia
                 </label>
               </div>
               <div>
-                <input class="pill-radio hidden" id="type-consultorio" name="businessType" type="radio" value="Consultorio">
+                <input class="pill-radio sr-only" id="type-consultorio" name="businessType" type="radio" value="Consultorio">
                 <label class="block text-center px-3 py-2.5 rounded-xl text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer hover:border-farma-black transition-all" for="type-consultorio">
                   Consultorio
                 </label>
               </div>
               <div>
-                <input class="pill-radio hidden" id="type-ambos" name="businessType" type="radio" value="Farmacia + Consultorio">
+                <input class="pill-radio sr-only" id="type-ambos" name="businessType" type="radio" value="Farmacia + Consultorio">
                 <label class="block text-center px-3 py-2.5 rounded-xl text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer hover:border-farma-black transition-all" for="type-ambos">
                   Ambos
                 </label>
@@ -671,19 +690,19 @@
             </label>
             <div class="grid grid-cols-3 gap-2">
               <div>
-                <input checked="" class="pill-radio hidden" id="suc-1" name="branches" type="radio" value="1">
+                <input checked="" class="pill-radio sr-only" id="suc-1" name="branches" type="radio" value="1">
                 <label class="block text-center px-3 py-2.5 rounded-xl text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer hover:border-farma-black transition-all" for="suc-1">
                   1 sucursal
                 </label>
               </div>
               <div class="">
-                <input class="pill-radio hidden" id="suc-2-5" name="branches" type="radio" value="2 a 5">
+                <input class="pill-radio sr-only" id="suc-2-5" name="branches" type="radio" value="2 a 5">
                 <label class="block text-center px-3 py-2.5 rounded-xl text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer hover:border-farma-black transition-all" for="suc-2-5">
                   2 a 5
                 </label>
               </div>
               <div class="">
-                <input class="pill-radio hidden" id="suc-more" name="branches" type="radio" value="más de 5">
+                <input class="pill-radio sr-only" id="suc-more" name="branches" type="radio" value="más de 5">
                 <label class="block text-center px-3 py-2.5 rounded-xl text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer hover:border-farma-black transition-all" for="suc-more">
                   Más de 5
                 </label>
@@ -697,46 +716,46 @@
             </label>
             <div class="flex flex-wrap gap-2">
               <div>
-                <input class="pill-check hidden" id="interest-pos" name="improvements" type="checkbox" value="Punto de venta / POS">
+                <input class="pill-check sr-only" id="interest-pos" name="improvements" type="checkbox" value="Punto de venta / POS">
                 <label class="inline-block px-3 py-1.5 rounded-lg text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer transition-all" for="interest-pos">
                   Punto de venta / POS
                 </label>
               </div>
               <div>
-                <input class="pill-check hidden" id="interest-inventario" name="improvements" type="checkbox" value="Inventario">
+                <input class="pill-check sr-only" id="interest-inventario" name="improvements" type="checkbox" value="Inventario">
                 <label class="inline-block px-3 py-1.5 rounded-lg text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer transition-all" for="interest-inventario">
                   Inventario
                 </label>
               </div>
               <div>
-                <input class="pill-check hidden" id="interest-caducidades" name="improvements" type="checkbox" value="Caducidades">
+                <input class="pill-check sr-only" id="interest-caducidades" name="improvements" type="checkbox" value="Caducidades">
                 <label class="inline-block px-3 py-1.5 rounded-lg text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer transition-all" for="interest-caducidades">
                   Caducidades
                 </label>
               </div>
               <div class="">
-                <input class="pill-check hidden" id="interest-operacion" name="improvements" type="checkbox" value="Operación general">
+                <input class="pill-check sr-only" id="interest-operacion" name="improvements" type="checkbox" value="Operación general">
                 <label class="inline-block px-3 py-1.5 rounded-lg text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer transition-all" for="interest-operacion">
                   Operación general
                 </label>
               </div>
               <div class="">
-                <input class="pill-check hidden" id="interest-clinica" name="improvements" type="checkbox" value="Gestión clínica">
+                <input class="pill-check sr-only" id="interest-clinica" name="improvements" type="checkbox" value="Gestión clínica">
                 <label class="inline-block px-3 py-1.5 rounded-lg text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer transition-all" for="interest-clinica">
                   Gestión clínica
                 </label>
               </div>
               <div class="">
-                <input class="pill-check hidden" id="interest-otro" name="improvements" type="checkbox" value="Otro">
+                <input class="pill-check sr-only" id="interest-otro" name="improvements" type="checkbox" value="Otro">
                 <label class="inline-block px-3 py-1.5 rounded-lg text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer transition-all" for="interest-otro">
                   Otro
                 </label>
               </div>
-            <div class=""><input class="pill-check hidden" id="interest-dental" name="improvements" type="checkbox" value="farmaOs Dental"><label class="inline-block px-3 py-1.5 rounded-lg text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer transition-all" for="interest-dental">farmaOs Dental</label></div></div>
+            <div class=""><input class="pill-check sr-only" id="interest-dental" name="improvements" type="checkbox" value="farmaOs Dental"><label class="inline-block px-3 py-1.5 rounded-lg text-xs border border-farma-line bg-farma-bg-warm text-farma-muted cursor-pointer transition-all" for="interest-dental">farmaOs Dental</label></div></div>
           </div>
           <!-- Submit Button -->
           <div class="pt-3">
-            <button class="w-full py-3.5 px-6 rounded-full bg-farma-blue hover:bg-farma-blue-dark text-white font-medium text-sm transition-all shadow-sm flex items-center justify-center gap-2 group cursor-pointer" id="submitBtn" type="submit" onclick="if(this.form.checkValidity()){ this.disabled = true; this.innerHTML = '&lt;span class=&quot;inline-block animate-pulse&quot;&gt;Enviando información...&lt;/span&gt;'; this.form.requestSubmit(); }">
+            <button class="w-full py-3.5 px-6 rounded-full bg-farma-blue hover:bg-farma-blue-dark text-white font-medium text-sm transition-all shadow-sm flex items-center justify-center gap-2 group cursor-pointer" style="background-color:#0E6AF2;color:#FFFFFF;" id="submitBtn" type="submit" >
               <span class="">Quiero conocer farmaOs</span>
               <span class="group-hover:translate-x-0.5 transition-transform">→</span>
             </button>
@@ -966,7 +985,7 @@
     document.getElementById('tabVisual').innerHTML = data.render;
   }
 
-    // 2. Conexión con Google Sheets
+  // 2. Conexión con Google Sheets
   const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxujx2oACqvUF10ElPefzUA8swWMJDeC8Gl05XYuB3kgfusOu7iROqRZzM9DNiMp-KR/exec";
 
   async function handleLeadSubmit(event) {
@@ -975,48 +994,39 @@
     const form = event.target;
     const btn = document.getElementById('submitBtn');
 
-    // Cambiar estado del botón mientras se envía
     if (btn) {
       btn.disabled = true;
-      btn.innerHTML = '<span>Enviando...</span>';
+      btn.innerHTML = '<span class="inline-block animate-pulse">Enviando información...</span>';
     }
 
     const fd = new FormData(form);
 
-    // Obtener valores del formulario
-    const fullName = fd.get('fullName') || '';
-    const businessName = fd.get('businessName') || '';
-    const whatsapp = fd.get('whatsapp') || '';
-    const email = fd.get('email') || '';
-    const businessType = fd.get('businessType') || '';
-    const branches = fd.get('branches') || '';
+    // Mapear los nombres internos de la landing a los encabezados reales del Sheet.
+    const payload = new URLSearchParams();
+    payload.append('nombre', fd.get('fullName') || '');
+    payload.append('negocio', fd.get('businessName') || '');
+    payload.append('whatsapp', fd.get('whatsapp') || '');
+    payload.append('correo', fd.get('email') || '');
+    payload.append('tipo de negocio', fd.get('businessType') || '');
+    payload.append('sucursales', fd.get('branches') || '');
 
-    // Obtener casillas seleccionadas de "Áreas a mejorar"
     const improvements = Array.from(
       form.querySelectorAll('input[name="improvements"]:checked')
-    )
-      .map(cb => cb.value)
-      .join(', ');
+    ).map(cb => cb.value);
 
-    // Crear payload usando EXACTAMENTE los nombres de las columnas del Google Sheet
-    const payload = new URLSearchParams();
-
-    payload.append('nombre', fullName);
-    payload.append('negocio', businessName);
-    payload.append('whatsapp', whatsapp);
-    payload.append('correo', email);
-    payload.append('tipo de negocio', businessType);
-    payload.append('sucursales', branches);
-    payload.append('areas a mejorar', improvements);
+    payload.append('areas a mejorar', improvements.join(', '));
 
     try {
+      // Apps Script recibe application/x-www-form-urlencoded mediante e.parameter.
+      // no-cors es necesario porque el Web App está en otro origen.
       await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         body: payload
       });
 
-      // Ocultar el formulario y mostrar el mensaje de éxito
+      // Con no-cors no podemos leer la respuesta HTTP; la validación definitiva
+      // es comprobar que la fila apareció en Google Sheets.
       const leadForm = document.getElementById('leadForm');
       const successState = document.getElementById('successState');
 
@@ -1025,20 +1035,40 @@
 
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
-
-      alert(
-        'Hubo un inconveniente al enviar la información. Por favor, intenta de nuevo.'
-      );
+      alert('Hubo un inconveniente al enviar la información. Por favor, intenta de nuevo.');
 
       if (btn) {
         btn.disabled = false;
-        btn.innerHTML =
-          '<span>Quiero conocer farmaOs</span>' +
-          '<span class="group-hover:translate-x-0.5 transition-transform">→</span>';
+        btn.innerHTML = '<span>Quiero conocer farmaOs</span><span class="group-hover:translate-x-0.5 transition-transform">→</span>';
       }
     }
   }
 
+  // 3. Estados interactivos de las opciones tipo pill.
+  // El input sigue siendo accesible (sr-only) y el label funciona como control visual.
+  document.querySelectorAll('input.pill-check, input.pill-radio').forEach((input) => {
+    input.addEventListener('change', () => {
+      const label = document.querySelector(`label[for="${input.id}"]`);
+      if (!label) return;
+
+      if (input.checked) {
+        label.style.borderColor = '#0E6AF2';
+        label.style.backgroundColor = '#EBF2FE';
+        label.style.color = '#0B55C4';
+        label.style.boxShadow = '0 0 0 1px #0E6AF2 inset';
+      } else {
+        label.style.borderColor = '#E5E5EA';
+        label.style.backgroundColor = '#F9F9F7';
+        label.style.color = '#6E6E73';
+        label.style.boxShadow = 'none';
+      }
+    });
+  });
+
+  // Pintar también las opciones que ya vienen seleccionadas al cargar.
+  document.querySelectorAll('input.pill-check:checked, input.pill-radio:checked').forEach((input) => {
+    input.dispatchEvent(new Event('change'));
+  });
 </script>
 
 </body></html>
