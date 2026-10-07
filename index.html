@@ -1001,14 +1001,15 @@
 
     const fd = new FormData(form);
 
-    // Mapear los nombres internos de la landing a los encabezados reales del Sheet.
+    // El Apps Script acepta estos nombres exactamente como los encabezados
+    // de la hoja para evitar cualquier dependencia de nombres internos del HTML.
     const payload = new URLSearchParams();
-    payload.append('nombre', fd.get('fullName') || '');
-    payload.append('negocio', fd.get('businessName') || '');
-    payload.append('whatsapp', fd.get('whatsapp') || '');
-    payload.append('correo', fd.get('email') || '');
-    payload.append('tipo de negocio', fd.get('businessType') || '');
-    payload.append('sucursales', fd.get('branches') || '');
+    payload.append('nombre', String(fd.get('fullName') || '').trim());
+    payload.append('negocio', String(fd.get('businessName') || '').trim());
+    payload.append('whatsapp', String(fd.get('whatsapp') || '').trim());
+    payload.append('correo', String(fd.get('email') || '').trim());
+    payload.append('tipo de negocio', String(fd.get('businessType') || '').trim());
+    payload.append('sucursales', String(fd.get('branches') || '').trim());
 
     const improvements = Array.from(
       form.querySelectorAll('input[name="improvements"]:checked')
@@ -1017,16 +1018,19 @@
     payload.append('areas a mejorar', improvements.join(', '));
 
     try {
-      // Apps Script recibe application/x-www-form-urlencoded mediante e.parameter.
-      // no-cors es necesario porque el Web App está en otro origen.
+      // application/x-www-form-urlencoded evita el preflight CORS del navegador.
+      // Apps Script recibe estos valores mediante e.parameter.
       await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
-        body: payload
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
+        body: payload.toString()
       });
 
-      // Con no-cors no podemos leer la respuesta HTTP; la validación definitiva
-      // es comprobar que la fila apareció en Google Sheets.
+      // Con no-cors el navegador no puede leer la respuesta del Web App.
+      // La confirmación definitiva es que la fila aparezca en Google Sheets.
       const leadForm = document.getElementById('leadForm');
       const successState = document.getElementById('successState');
 
@@ -1045,29 +1049,39 @@
   }
 
   // 3. Estados interactivos de las opciones tipo pill.
-  // El input sigue siendo accesible (sr-only) y el label funciona como control visual.
+  // Los radios mantienen su comportamiento nativo.
+  // Los checkboxes tienen un click explícito para garantizar que puedan
+  // seleccionarse Y deseleccionarse al volver a tocar la misma opción.
+  function updatePillState(input) {
+    const label = document.querySelector(`label[for="${input.id}"]`);
+    if (!label) return;
+
+    if (input.checked) {
+      label.style.borderColor = '#0E6AF2';
+      label.style.backgroundColor = '#EBF2FE';
+      label.style.color = '#0B55C4';
+      label.style.boxShadow = '0 0 0 1px #0E6AF2 inset';
+    } else {
+      label.style.borderColor = '#E5E5EA';
+      label.style.backgroundColor = '#F9F9F7';
+      label.style.color = '#6E6E73';
+      label.style.boxShadow = 'none';
+    }
+  }
+
   document.querySelectorAll('input.pill-check, input.pill-radio').forEach((input) => {
-    input.addEventListener('change', () => {
-      const label = document.querySelector(`label[for="${input.id}"]`);
-      if (!label) return;
+    const label = document.querySelector(`label[for="${input.id}"]`);
 
-      if (input.checked) {
-        label.style.borderColor = '#0E6AF2';
-        label.style.backgroundColor = '#EBF2FE';
-        label.style.color = '#0B55C4';
-        label.style.boxShadow = '0 0 0 1px #0E6AF2 inset';
-      } else {
-        label.style.borderColor = '#E5E5EA';
-        label.style.backgroundColor = '#F9F9F7';
-        label.style.color = '#6E6E73';
-        label.style.boxShadow = 'none';
-      }
-    });
-  });
+    if (label && input.classList.contains('pill-check')) {
+      label.addEventListener('click', (event) => {
+        event.preventDefault();
+        input.checked = !input.checked;
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    }
 
-  // Pintar también las opciones que ya vienen seleccionadas al cargar.
-  document.querySelectorAll('input.pill-check:checked, input.pill-radio:checked').forEach((input) => {
-    input.dispatchEvent(new Event('change'));
+    input.addEventListener('change', () => updatePillState(input));
+    updatePillState(input);
   });
 </script>
 
