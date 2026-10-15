@@ -32,19 +32,25 @@
     s: 'M1930.83 310.439C1961.19 309.345 1988.51 315.336 2015.46 329.48C2011.14 341.424 2003.89 355.624 1997.43 366.489C1983.86 361.316 1933.49 338.573 1930.77 369.034C1930.47 384.218 1952.42 390.007 1963.09 393.779C1981.22 400.426 2005.71 408.426 2017.91 423.951C2047.81 461.999 2028.52 516.526 1981.21 528.075C1958.44 533.631 1950.46 535.177 1927.62 533.276C1898.74 530.538 1873.69 518.848 1850.02 502.548C1858.96 488.322 1865.26 476.115 1873.05 461.205C1892.13 474.424 1913.53 485.986 1937.62 484.509C1943.27 484.266 1951.38 481.698 1954.73 476.835C1975.43 446.365 1926.53 440.589 1908.52 432.123C1906.39 431.352 1904.24 430.324 1902.15 429.508C1880.05 420.875 1860.88 405.586 1858.57 380.447C1857.24 365.916 1862.02 346.702 1871.35 335.197C1885.8 317.4 1909.48 312.639 1930.83 310.439Z'
   };
 
-  // Línea de tiempo en ms (a velocidad 1). Total ≈ 1780 ms.
+  // Línea de tiempo en ms (a velocidad 1). Total ≈ 3150 ms.
+  // Tres tiempos que se leen por separado, con una pausa entre cada uno:
+  //   1) cae la píldora y se vuelve la "O" de farmaOs
+  //   2) pausa: se lee "farmaOs"
+  //   3) se caen las "a", aparece ".io", pausa: se lee "frmos.io"
   var T = {
-    drop: [0, 320],          // la píldora cae
-    morph: [260, 620],       // píldora → "O"
-    toInk: [420, 700],       // azul → negro: aparece farmaOs
-    lettersIn: 380,          // primer glifo entra
-    stagger: 40,
-    letterDur: 260,
-    shift: [900, 1240],      // farmaOs → frmos (se caen las "a")
-    aDrop: [880, 1140],
-    pops: [1100, 1150, 1200],// ".", "i", "o" de .io
-    popDur: 190,
-    fade: [1500, 1780]       // se descubre la landing
+    drop: [0, 380],          // la píldora cae
+    morph: [340, 800],       // píldora → "O"
+    toInk: [560, 920],       // azul → negro: aparece farmaOs
+    lettersIn: 520,          // primer glifo entra
+    stagger: 70,
+    letterDur: 300,          // último glifo aterriza ≈ 1100
+    // pausa 1100 → 1560: "farmaOs" completo y quieto
+    aDrop: [1560, 1860],
+    shift: [1580, 1980],     // farmaOs → frmos (se caen las "a")
+    pops: [1990, 2080, 2170],// ".", "i", "o" de .io
+    popDur: 220,             // ".io" termina ≈ 2390
+    // pausa 2390 → 2800: "frmos.io" completo y quieto
+    fade: [2800, 3150]       // se descubre la landing
   };
   var TOTAL = T.fade[1];
 
