@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!--
+  farmaOs Reach · Plantilla web de 1 página por doctor — add-on "Identidad visual" — DEMO.
+  Datos 100% ficticios: doctor y práctica inventados, fotos placeholder dibujadas,
+  reseñas inventadas, QR a slug de ejemplo (dr-ejemplo-identidad, no existe).
+  Sin dependencias externas: abre directo en el navegador, funciona sin red.
+
+  Qué demuestra esta variante (spec en claude/73, add-on aprobado por jor 21-nov,
+  cargo único $1,500 +IVA, no recurrente):
+  - Logo propio de la práctica (monograma demo) en el header, junto al nombre.
+  - Paleta de marca propia del doctor (--marca-primaria / --marca-secundaria),
+    DISTINTA del azul core de farmaOs (#0E6AF2) — aplicada al header, botón de
+    agendar, insignia de cédula, acentos de tarjetas y los módulos oscuros del QR.
+  - Decisión de diseño: la franja de aviso de cumplimiento y el pie "Hecha con
+    farmaOs Reach" se quedan en el azul core de farmaOs, sin importar la paleta
+    del doctor — son elementos de farmaOs, no de la identidad del cliente, y
+    deben verse iguales en cualquier página Reach para que el aviso siga siendo
+    reconocible como mensaje regulatorio, no como parte del branding del doctor.
+
+  Compliance (Reglamento LGS en Materia de Publicidad, Arts. 19, 63-65, 79 fr. VI),
+  igual que la variante de cirugía plástica (reach/plantilla-doctor-cirugia-plastica.html):
+  - SIN fotos de antes/después (permiso de publicidad de embellecimiento no tramitado).
+  - Aviso "los resultados pueden variar" como franja visible, no letra chica.
+  - Cédula profesional E institución educativa visibles (Art. 19).
+  - Ninguna promesa de resultado ni testimonial que prometa curación (Arts. 63-65).
+  Movida a farmaos-landing (web.frmos.io/medicos/<slug>/) desde el repo del
+  sistema (mejorgelatina/Farmapperpsystem, carpeta reach/) — 22-nov-2026,
+  decisión de jor para servir Reach desde la landing y aprovechar SEO.
+  noindex/nofollow mientras sea una plantilla demo: se quita cuando el
+  doctor real de esa página quede confirmado.
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Dra. Camila Ejemplo, cirujana plástica — Clínica Lumière. Agenda tu valoración en línea. Página de demostración con datos ficticios.">
+<title>Dra. Camila Ejemplo · Clínica Lumière — Agenda tu valoración</title>
+<style>
+  :root {
+    /* Núcleo farmaOs: se usa SOLO en la franja de aviso y el pie, nunca en el resto. */
+    --azul: #0E6AF2;
+    --azul-oscuro: #0B54C4;
+    /* Identidad propia del doctor (add-on "Identidad visual", demo): paleta de ejemplo
+       para Clínica Lumière. En un alta real esto vendría de los 2-3 colores entregados. */
+    --marca-primaria: #0F766E;
+    --marca-primaria-oscura: #0B5D56;
+    --marca-secundaria: #D4A24C;
+    --tinta: #1A2333;
+    --gris: #5A6B85;
+    --linea: #E3E9F2;
+    --fondo: #F5F8FC;
+    --tarjeta: #FFFFFF;
+    --radio: 16px;
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--fondo);
+    color: var(--tinta);
+    line-height: 1.55;
+  }
+  .pagina { max-width: 520px; margin: 0 auto; padding: 0 0 64px; }
+  header.hero {
+    background: linear-gradient(180deg, var(--marca-primaria) 0%, var(--marca-primaria-oscura) 100%);
+    color: #fff;
+    text-align: center;
+    padding: 40px 24px 28px;
+    border-radius: 0 0 28px 28px;
+  }
+  .logo-practica {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    margin: 0 0 14px;
+  }
+  .logo-practica svg { width: 32px; height: 32px; }
+  .logo-practica span {
+    font-size: 0.95rem; font-weight: 700; letter-spacing: 0.02em;
+    text-transform: uppercase; opacity: 0.95;
+  }
+  .foto-doctor {
+    width: 120px; height: 120px; border-radius: 50%;
+    border: 4px solid #fff; margin: 0 auto 16px; display: block;
+    background: #fff;
+  }
+  header.hero h1 { font-size: 1.7rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+  header.hero .especialidad { font-size: 1.05rem; font-weight: 700; margin: 0 0 8px; opacity: 0.95; }
+  header.hero .frase { font-size: 1rem; margin: 0 auto 16px; max-width: 34ch; opacity: 0.92; }
+  .cedula {
+    display: inline-block; font-size: 0.95rem; font-weight: 700;
+    background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.45);
+    padding: 8px 14px; border-radius: 999px; margin: 0 0 8px;
+  }
+  .egreso { font-size: 0.95rem; font-weight: 600; margin: 0; opacity: 1; }
+  /* Franja de aviso reusable (espec M9, texto largo): SIEMPRE azul core de farmaOs,
+     no la paleta del doctor — es el mensaje regulatorio, no el branding del cliente. */
+  .franja-aviso {
+    background: var(--azul); color: #fff; text-align: center;
+    padding: 14px 20px; margin: 0;
+    font-size: 1rem; font-weight: 700; line-height: 1.5;
+  }
+  .franja-aviso small { display: block; font-size: 0.9rem; font-weight: 600; opacity: 0.95; margin-top: 2px; }
+  main { padding: 20px 20px 0; display: grid; gap: 16px; }
+  .tarjeta {
+    background: var(--tarjeta); border: 1px solid var(--linea);
+    border-radius: var(--radio); padding: 20px;
+  }
+  .tarjeta h2 { font-size: 1.05rem; margin: 0 0 12px; }
+  .tarjeta p { font-size: 0.98rem; margin: 0 0 8px; }
+  .tarjeta p:last-child { margin-bottom: 0; }
+  .btn-agendar {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 56px; width: 100%;
+    background: var(--marca-primaria); color: #fff;
+    font-size: 1.15rem; font-weight: 800; text-decoration: none;
+    border-radius: var(--radio); border: none; cursor: pointer;
+  }
+  .btn-agendar:hover { background: var(--marca-primaria-oscura); }
+  .btn-agendar:focus-visible { outline: 3px solid var(--marca-primaria-oscura); outline-offset: 3px; }
+  .canales { display: flex; gap: 20px; justify-content: center; padding: 4px 0 0; }
+  .canales a {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid var(--linea); background: var(--tarjeta);
+    color: var(--gris); text-decoration: none;
+  }
+  .canales a:focus-visible { outline: 3px solid var(--marca-primaria); outline-offset: 2px; }
+  .canales svg { width: 20px; height: 20px; }
+  .canales-nota { text-align: center; font-size: 0.9rem; color: var(--gris); margin: 0; }
+  .fotos-consultorio { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .fotos-consultorio svg { width: 100%; height: auto; border-radius: 12px; display: block; }
+  blockquote.resena { margin: 0 0 14px; padding: 0 0 0 14px; border-left: 3px solid var(--marca-secundaria); }
+  blockquote.resena:last-child { margin-bottom: 0; }
+  blockquote.resena p { margin: 0 0 4px; font-size: 0.98rem; }
+  blockquote.resena footer { font-size: 0.85rem; color: var(--gris); font-weight: 600; }
+  .qr-bloque { text-align: center; }
+  .qr-bloque svg { width: 180px; height: 180px; }
+  .qr-bloque svg path[fill="#000000"] { fill: var(--marca-primaria); }
+  .qr-url { font-size: 0.9rem; color: var(--gris); word-break: break-all; margin: 8px 0 12px; }
+  .btn-secundario {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 44px; padding: 0 20px;
+    background: var(--tarjeta); color: var(--marca-primaria);
+    border: 2px solid var(--marca-primaria); border-radius: 12px;
+    font-size: 1rem; font-weight: 700; cursor: pointer; text-decoration: none;
+  }
+  .btn-secundario:focus-visible { outline: 3px solid var(--marca-primaria-oscura); outline-offset: 2px; }
+  .ubicacion p { margin: 0 0 6px; font-size: 0.98rem; }
+  .ubicacion p:last-child { margin-bottom: 0; }
+  footer.pie {
+    text-align: center; padding: 28px 20px 0;
+    font-size: 0.9rem; color: var(--gris);
+  }
+  footer.pie strong { color: var(--tinta); }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  "name": "Dra. Camila Ejemplo",
+  "medicalSpecialty": "Cirujana plástica",
+  "url": "https://web.frmos.io/medicos/dra-ejemplo-identidad/",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Ejemplo 123, Col. Demo",
+    "addressLocality": "Ciudad de México",
+    "addressCountry": "MX"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Saturday"
+      ],
+      "opens": "09:00",
+      "closes": "13:00"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="pagina">
+
+  <header class="hero">
+    <!-- Logo de la práctica (demo del add-on "Identidad visual"): monograma en la
+         paleta propia del doctor, no en el azul core de farmaOs. -->
+    <div class="logo-practica">
+      <svg viewBox="0 0 32 32" role="img" aria-label="Logo de Clínica Lumière (placeholder de demostración)">
+        <circle cx="16" cy="16" r="16" fill="#D4A24C"/>
+        <path d="M16 6c5.5 0 10 4.5 10 10s-4.5 10-10 10S6 21.5 6 16 10.5 6 16 6z" fill="none" stroke="#0F766E" stroke-width="1.5" opacity="0.5"/>
+        <text x="16" y="21" text-anchor="middle" font-size="14" font-weight="700" fill="#0F766E" font-family="sans-serif">L</text>
+      </svg>
+      <span>Clínica Lumière</span>
+    </div>
+    <!-- Foto placeholder dibujada (demo): iniciales sobre fondo de marca del doctor. -->
+    <svg class="foto-doctor" viewBox="0 0 120 120" role="img" aria-label="Foto de la doctora (placeholder de demostración)">
+      <circle cx="60" cy="60" r="60" fill="#0F766E"/>
+      <circle cx="60" cy="48" r="20" fill="#FFFFFF" opacity="0.92"/>
+      <path d="M28 104c4-22 18-32 32-32s28 10 32 32" fill="#FFFFFF" opacity="0.92"/>
+    </svg>
+    <h1>Dra. Camila Ejemplo</h1>
+    <p class="especialidad">Cirujana plástica</p>
+    <p class="frase">Tu valoración, con información clara para decidir con calma.</p>
+    <p><span class="cedula">Céd. Prof. 0000000</span></p>
+    <p class="egreso">Médica Cirujana, Universidad Ejemplo · Datos de demostración</p>
+  </header>
+
+  <!-- Aviso reusable M9: franja visible, no letra chica. Azul core de farmaOs (ver nota de diseño arriba). -->
+  <p class="franja-aviso" role="note">
+    Los resultados pueden variar en cada paciente.
+    <small>Céd. Prof. 0000000 · Página de demostración con datos ficticios</small>
+  </p>
+
+  <main>
+    <section class="tarjeta" aria-label="Agendar cita">
+      <a class="btn-agendar" href="https://www.frmos.io/agenda/dra-ejemplo-identidad">
+        Agendar cita
+      </a>
+      <div class="canales">
+        <!-- Canales de contacto (demo): el alta real los conecta por cliente. -->
+        <a href="#" aria-label="WhatsApp (demo)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12a9 9 0 1 1-16.6 5L3 21l4.2-1.4A9 9 0 0 1 21 12z"/><path d="M9 9.5c.5 2.5 3 5 5.5 5.5l1-1.5 2 1c-.5 1.5-1.5 2-3 1.5-3.5-1-6.5-4-7.5-7.5-.5-1.5 0-2.5 1.5-3l1 2z"/></svg></a>
+        <a href="#" aria-label="Instagram (demo)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="Facebook (demo)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 4h-2.5A3.5 3.5 0 0 0 9 7.5V10H6v4h3v6h4v-6h3l1-4h-4V7.5A.5.5 0 0 1 13.5 7H15z"/></svg></a>
+      </div>
+      <p class="canales-nota">¿Dudas? Escríbeme por estos canales. Para agendar, usa el botón de arriba.</p>
+    </section>
+
+    <section class="tarjeta" aria-label="Tu primera visita">
+      <h2>Tu primera visita</h2>
+      <p>Una consulta de valoración: revisamos tu caso, te explico las opciones y recibes los costos por escrito.</p>
+      <p>Sin compromiso: la decisión la tomas tú, con la información completa.</p>
+    </section>
+
+    <section class="tarjeta" aria-label="Consultorio y equipo">
+      <h2>El consultorio y el equipo</h2>
+      <!-- Solo consultorio/equipo/doctor: NADA de antes/después (permiso Art. 79 fr. VI no tramitado). -->
+      <div class="fotos-consultorio">
+        <svg viewBox="0 0 200 150" role="img" aria-label="Foto 1 del consultorio (placeholder)"><rect width="200" height="150" fill="#DCEDEA"/><rect x="30" y="40" width="140" height="70" rx="8" fill="#0F766E" opacity="0.25"/><text x="100" y="135" text-anchor="middle" font-size="13" fill="#5A6B85" font-family="sans-serif">Consultorio 1</text></svg>
+        <svg viewBox="0 0 200 150" role="img" aria-label="Foto 2 del consultorio (placeholder)"><rect width="200" height="150" fill="#E4F1EE"/><circle cx="100" cy="70" r="28" fill="#0F766E" opacity="0.25"/><text x="100" y="135" text-anchor="middle" font-size="13" fill="#5A6B85" font-family="sans-serif">Consultorio 2</text></svg>
+        <svg viewBox="0 0 200 150" role="img" aria-label="Foto 1 del equipo (placeholder)"><rect width="200" height="150" fill="#DCEDEA"/><rect x="60" y="35" width="80" height="80" rx="40" fill="#0F766E" opacity="0.25"/><text x="100" y="135" text-anchor="middle" font-size="13" fill="#5A6B85" font-family="sans-serif">Equipo 1</text></svg>
+        <svg viewBox="0 0 200 150" role="img" aria-label="Foto 2 del equipo (placeholder)"><rect width="200" height="150" fill="#DCEDEA"/><rect x="30" y="55" width="140" height="14" rx="7" fill="#0F766E" opacity="0.25"/><rect x="50" y="80" width="100" height="14" rx="7" fill="#0F766E" opacity="0.18"/><text x="100" y="135" text-anchor="middle" font-size="13" fill="#5A6B85" font-family="sans-serif">Equipo 2</text></svg>
+      </div>
+    </section>
+
+    <section class="tarjeta" aria-label="Reseñas de pacientes">
+      <h2>Lo que dicen mis pacientes</h2>
+      <!-- Solo trato y experiencia: ninguna promete resultado ni curación (Arts. 63-65). -->
+      <blockquote class="resena">
+        <p>"Puntual y clara desde la primera cita. Me explicó cada paso sin prisa."</p>
+        <footer>— Mariana G., paciente inventada</footer>
+      </blockquote>
+      <blockquote class="resena">
+        <p>"Agendé en un minuto desde mi celular. El consultorio, impecable."</p>
+        <footer>— Roberto M., paciente inventado</footer>
+      </blockquote>
+    </section>
+
+    <section class="tarjeta qr-bloque" aria-label="Código QR para agendar">
+      <h2>Guarda esta página</h2>
+      <svg role="img" aria-label="Código QR para agendar cita con la doctora (demostración)" height="512" width="512" viewBox="0 0 37 37" role="img"><path fill="#FFFFFF" d="M0,0 h37v37H0z" shape-rendering="crispEdges"></path><path fill="#000000" d="M4 4h7v1H4zM14 4h1v1H14zM16 4h1v1H16zM18 4h1v1H18zM20 4h1v1H20zM22 4h3v1H22zM26,4 h7v1H26zM4 5h1v1H4zM10 5h1v1H10zM13 5h4v1H13zM19 5h3v1H19zM24 5h1v1H24zM26 5h1v1H26zM32,5 h1v1H32zM4 6h1v1H4zM6 6h3v1H6zM10 6h1v1H10zM12 6h1v1H12zM15 6h2v1H15zM19 6h2v1H19zM26 6h1v1H26zM28 6h3v1H28zM32,6 h1v1H32zM4 7h1v1H4zM6 7h3v1H6zM10 7h1v1H10zM12 7h1v1H12zM14 7h5v1H14zM21 7h1v1H21zM26 7h1v1H26zM28 7h3v1H28zM32,7 h1v1H32zM4 8h1v1H4zM6 8h3v1H6zM10 8h1v1H10zM12 8h1v1H12zM14 8h1v1H14zM16 8h2v1H16zM20 8h1v1H20zM22 8h3v1H22zM26 8h1v1H26zM28 8h3v1H28zM32,8 h1v1H32zM4 9h1v1H4zM10 9h1v1H10zM12 9h4v1H12zM18 9h3v1H18zM24 9h1v1H24zM26 9h1v1H26zM32,9 h1v1H32zM4 10h7v1H4zM12 10h1v1H12zM14 10h1v1H14zM16 10h1v1H16zM18 10h1v1H18zM20 10h1v1H20zM22 10h1v1H22zM24 10h1v1H24zM26,10 h7v1H26zM12 11h1v1H12zM15 11h1v1H15zM19 11h2v1H19zM23 11h2v1H23zM4 12h1v1H4zM6 12h5v1H6zM13 12h1v1H13zM15 12h5v1H15zM21 12h1v1H21zM23 12h1v1H23zM26 12h5v1H26zM4 13h2v1H4zM7 13h1v1H7zM14 13h1v1H14zM16 13h2v1H16zM20 13h4v1H20zM25 13h4v1H25zM32,13 h1v1H32zM4 14h4v1H4zM9 14h2v1H9zM13 14h1v1H13zM15 14h5v1H15zM21 14h1v1H21zM24 14h1v1H24zM5 15h1v1H5zM7 15h1v1H7zM13 15h1v1H13zM16 15h1v1H16zM18 15h1v1H18zM22 15h6v1H22zM29 15h1v1H29zM31 15h1v1H31zM4 16h3v1H4zM8 16h1v1H8zM10 16h1v1H10zM12 16h1v1H12zM14 16h1v1H14zM21 16h1v1H21zM23 16h1v1H23zM29 16h2v1H29zM6 17h1v1H6zM8 17h1v1H8zM12 17h1v1H12zM14 17h2v1H14zM17 17h1v1H17zM20 17h1v1H20zM22 17h3v1H22zM26 17h1v1H26zM28 17h1v1H28zM32,17 h1v1H32zM6 18h1v1H6zM10 18h4v1H10zM15 18h1v1H15zM17 18h4v1H17zM24 18h2v1H24zM27 18h1v1H27zM29 18h2v1H29zM4 19h5v1H4zM12 19h2v1H12zM15 19h1v1H15zM17 19h1v1H17zM19 19h2v1H19zM22 19h1v1H22zM25 19h4v1H25zM31 19h1v1H31zM4 20h4v1H4zM10 20h3v1H10zM14 20h1v1H14zM18 20h2v1H18zM21 20h1v1H21zM23 20h1v1H23zM27 20h1v1H27zM29 20h2v1H29zM4 21h3v1H4zM8 21h1v1H8zM15 21h1v1H15zM20 21h1v1H20zM22 21h7v1H22zM30 21h1v1H30zM32,21 h1v1H32zM4 22h1v1H4zM7 22h2v1H7zM10 22h1v1H10zM12 22h2v1H12zM15 22h1v1H15zM19 22h2v1H19zM22 22h1v1H22zM26 22h2v1H26zM30 22h1v1H30zM4 23h1v1H4zM8 23h1v1H8zM12 23h1v1H12zM15 23h2v1H15zM18 23h3v1H18zM23 23h2v1H23zM27 23h2v1H27zM31 23h1v1H31zM4 24h1v1H4zM6 24h2v1H6zM10 24h1v1H10zM21 24h8v1H21zM30,24 h3v1H30zM12 25h2v1H12zM15 25h4v1H15zM21 25h2v1H21zM24 25h1v1H24zM28,25 h5v1H28zM4 26h7v1H4zM13 26h1v1H13zM15 26h1v1H15zM17 26h5v1H17zM23 26h2v1H23zM26 26h1v1H26zM28 26h3v1H28zM4 27h1v1H4zM10 27h1v1H10zM12 27h3v1H12zM17 27h1v1H17zM19 27h1v1H19zM24 27h1v1H24zM28 27h1v1H28zM32,27 h1v1H32zM4 28h1v1H4zM6 28h3v1H6zM10 28h1v1H10zM12 28h1v1H12zM15 28h2v1H15zM18 28h2v1H18zM21 28h1v1H21zM24 28h5v1H24zM30 28h1v1H30zM4 29h1v1H4zM6 29h3v1H6zM10 29h1v1H10zM12 29h2v1H12zM15 29h1v1H15zM17 29h1v1H17zM20 29h1v1H20zM22 29h3v1H22zM27 29h1v1H27zM29,29 h4v1H29zM4 30h1v1H4zM6 30h3v1H6zM10 30h1v1H10zM12 30h1v1H12zM15 30h1v1H15zM17 30h3v1H17zM25 30h7v1H25zM4 31h1v1H4zM10 31h1v1H10zM13 31h3v1H13zM18 31h1v1H18zM22 31h3v1H22zM26 31h2v1H26zM29 31h1v1H29zM31 31h1v1H31zM4 32h7v1H4zM12 32h3v1H12zM18 32h4v1H18zM23 32h1v1H23zM26 32h5v1H26z" shape-rendering="crispEdges"></path></svg>
+      <p class="qr-url">www.frmos.io/agenda/dra-ejemplo-identidad</p>
+      <button class="btn-secundario" id="descargar-qr" type="button">Descargar QR</button>
+    </section>
+
+    <section class="tarjeta ubicacion" aria-label="Ubicación y horarios">
+      <h2>Ubicación y horarios</h2>
+      <p><strong>Av. Ejemplo 123, Col. Demo,</strong> Ciudad de México</p>
+      <p>Lunes a viernes · 9:00–18:00<br>Sábados · 9:00–13:00</p>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p><strong>Página de demostración</strong> · Todos los datos son 100% ficticios.</p>
+    <p>Hecha con <strong>farmaOs Reach</strong></p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var boton = document.getElementById('descargar-qr');
+  if (!boton) return;
+  boton.addEventListener('click', function () {
+    try {
+      var svg = document.querySelector('.qr-bloque svg');
+      if (!svg) return;
+      var texto = new XMLSerializer().serializeToString(svg);
+      var blob = new Blob([texto], { type: 'image/svg+xml;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'qr-reserva-ejemplo-identidad.svg';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (e) {
+      boton.textContent = 'No se pudo descargar, intenta de nuevo';
+    }
+  });
+})();
+</script>
+</body>
+</html>
